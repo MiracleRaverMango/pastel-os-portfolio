@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Ms. Mango — About</title>
+  <link rel="stylesheet" href="css/site.cleaned.css"/>
+</head>
+<body>
+  <main class="desktop">
+    <nav class="dock">
+      <a class="icon" href="index.html"><img src="assets/mascot_head.svg" alt=""><span>My Computer</span></a>
+      <a class="icon" href="work.html"><img src="assets/kawaii_folder_heart.png" alt=""><span>Work Files</span></a>
+     <a class="icon" href="music.html"><img src="assets/headphone_sparkle.png" alt=""><span>Music Player</span></a>
+      <a class="icon" href="about.html"><img src="assets/opened_sparkle.png" alt=""><span>About_Me.txt</span></a>
+    </nav>
+
+    <section id="window-about" class="window">
+      <header class="titlebar">
+        <div class="title">About Me — Notepad</div>
+        <div class="controls">
+          <button class="winbtn" data-action="min">–</button>
+          <button class="winbtn" data-action="max">▢</button>
+          <button class="winbtn danger" data-action="close">✕</button>
+        </div>
+      </header>
+
+
+      <div class="toolbar">
+        <span class="crumb">File</span>
+        <span class="crumb">Edit</span>
+        <span class="crumb">Help</span>
+      </div>
+      <div class="content">
+        <div class="notepad">
+          <div class="paper">
+            <h3 style="margin:0 0 10px">Hi! I’m Mango 🥭</h3>
+            <p>I’m a designer and front-end dev who pairs warm, pastel vibes with clean, dependable builds. I mostly do <em>branding & logos</em> and <em>web/front-end</em> for DJs, bands, indie labels, and small studios.</p>
+
+            <p><b>What I do:</b><br>
+Brand identities (logo suites, usage notes, basic tokens) and press-ready websites with real features—audio players, galleries, EPK sections, and light CMS/blogs. Accessibility and mobile performance are non-negotiable.</p>
+          <p><b>Process</b><br>
+          Discovery → wireframes → component kit → pages → polish (motion + a11y) → hand-off.
+Delivery is both a cloud link and a flash drive with organized source files.</p>
+            <p><b>Tools</b><br>
+            VS Code, GitHub, Figma, CodePen, Photoshop, Illustrator, After Effects.</p>
+<p><b>Optional touches</b><br>
+Simple icon sets and tasteful easter eggs (dark mode toggles, jiggly icons, gentle idle motion) when it suits the brand.</p>
+            <p><b>Availability & Contact</b></p>
+            Booking: <b>open</b> · Response time: <b>within 24 hours</b><br>
+            Email:<a href="mailto:miracleravermango@gmail.com">miracleravermango@gmail.com</a><br>
+            Instagram:<a href="https://www.instagram.com/miracleravermango/">@miracleravermango</a><br>
+            <p><b>Pricing: fixed bid after a free 30-minute consult.</b></p>
+          </div>
+        </div>
+      </div>
+      <div class="win-statusbar">
+  <span class="status-left">1,011 Characters</span>
+  <span class="status-right">Ready</span>
+</div>
+      <div class="resizer" data-resize="se" aria-hidden="true"></div>
+        <button class="resize-grip" data-resize="se" aria-label="Resize"></button>    </section>
+
+  </main>
+
+  <footer class="taskbar">
+    <button class="start"><img src="assets/mango_sparkle.png" alt=""><span>Start</span></button>
+    <div class="task-buttons">
+      <button class="task-btn is-active" data-win="window-about">
+        <img class="task-icon" src="assets/opened_sparkle.png" alt="">
+        <span class="task-label">About Me</span>
+      </button>
+    </div>
+    <div class="task-search"><input type="search" placeholder="Type a command..."></div>
+    <div class="tray">
+      <button><img src="assets/closed_mail.png" alt=""></button>
+      <button><img src="assets/headphone_sparkle.png" alt=""></button> 
+      <button><img src="assets/kawaii_folder.png" alt=""></button>
+    </div>
+    <div class="clock">00:00</div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

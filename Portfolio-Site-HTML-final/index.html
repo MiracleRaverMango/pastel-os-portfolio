@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Ms. Mango — Home</title>
+  <link rel="stylesheet" href="css/site.cleaned.css"/>
+
+</head>
+<body>
+
+<!-- Boot overlay -->
+<div id="boot" class="boot" aria-hidden="false">
+  <video id="bootVid"
+         muted
+         playsinline
+         autoplay
+         preload="auto"
+         poster="assets/MangoOS_Boot_poster.jpg">
+    <source src="assets/MangoOS_Boot.mp4" type="video/mp4" />
+  </video>
+</div>
+
+<!-- Your desktop -->
+<main id="app" class="desktop" hidden>
+
+    <nav class="dock" aria-label="Desktop dock">
+      <a class="icon" href="index.html"><img src="assets/mascot_head.png" alt=""><span>My Computer</span></a>
+      <a class="icon" href="work.html"><img src="assets/kawaii_folder_heart.png" alt=""><span>Work Files</span></a>
+      <a class="icon" href="music.html"><img src="assets/headphone_sparkle.png" alt=""><span>Music Player</span></a> 
+      <a class="icon" href="about.html"><img src="assets/opened_sparkle.png" alt=""><span>About_Me.txt</span></a>
+    </nav>
+
+    <!-- Commands reference -->
+    <section id="window-commands" class="window small minimized is-hidden" aria-label="Commands">
+      <header class="titlebar">
+        <h3>📄 Commands.txt</h3>
+        <div class="controls">
+          <button class="winbtn" data-action="min" title="Minimize">–</button>
+          <button class="winbtn" data-action="max" title="Maximize">▢</button>
+          <button class="winbtn danger" data-action="close" title="Close">✕</button>
+        </div>
+      </header>
+      <div class="toolbar">
+        <span class="crumb">File</span>
+        <span class="crumb">Edit</span>
+        <span class="crumb">Help</span>
+      </div>
+      <div class="content">
+        <div class="notepad">
+          <div class="paper">
+            <div class="content" style="font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace; font-size:14px; line-height:1.5">
+<pre>
+Type these in the search bar then press Enter:
+
+help                  → open this Commands.txt window
+cls                   → clear effects
+winver                → show site/version window
+dir                   → jiggle desktop icons briefly
+tree                  → grow an ASCII tree overlay
+ping                  → send ripple “pings” from edges
+ipconfig              → playful IP readout
+<!-- color &lt;pink|purple|aqua&gt; → switch accent theme -->
+
+# Mango FX (from the CodePen)
+start sparkles        → corner burst of ✨⭐
+start hearts          → corner burst of 💖💕
+start bubbles         → corner burst of 🫧
+start trail           → 8-second mouse sparkle trail
+<!-- taskkill /f           → minimize all open windows -->
+</pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WinVer (about this site) -->
+    <section id="window-winver" class="window small minimized is-hidden" aria-label="About">
+      <header class="titlebar">
+        <h3>About This Site</h3>
+        <div class="controls">
+          <button class="winbtn" data-action="min" title="Minimize">–</button>
+          <button class="winbtn" data-action="max" title="Maximize">▢</button>
+          <button class="winbtn danger" data-action="close" title="Close">✕</button>
+        </div>
+      </header>
+      <div class="win-toolbar"></div>
+      <div class="content">
+        <p><strong>Miracle Raver Desktop</strong><br>Version 1.0 (cute build)</p>
+        <p>Designer/Dev: Ms. Mango 🥭</p>
+      </div>
+    </section>
+
+    <!-- Main window -->
+    <section id="window-home" class="window minimized is-hidden" aria-label="Portfolio Viewer">
+      <header class="titlebar" role="toolbar" aria-label="Window controls">
+        <div class="title">Portfolio Viewer</div>
+        <div class="controls">
+          <button class="winbtn" data-action="min" title="Minimize">–</button>
+          <button class="winbtn" data-action="max" title="Maximize">▢</button>
+          <button class="winbtn danger" data-action="close" title="Close">✕</button>
+        </div>
+      </header>
+
+      <!-- Explorer-style toolbar -->
+      <div class="win-toolbar" role="group" aria-label="Toolbar">
+        <div class="tb-left">
+          <button class="tb-btn" aria-label="Back">⟨</button>
+          <button class="tb-btn" aria-label="Forward">⟩</button>
+          <button class="tb-btn" aria-label="Up">⤴</button>
+          <button class="tb-btn" aria-label="Refresh">↻</button>
+        </div>
+
+        <nav class="tb-crumbs" aria-label="Breadcrumb">
+          <button class="crumb">This PC</button>
+          <span class="crumb-sep">›</span>
+          <button class="crumb">Portfolio</button>
+          <span class="crumb-sep">›</span>
+          <button class="crumb is-current" aria-current="page">Home</button>
+        </nav>
+
+        <div class="tb-right">
+          <button class="tb-btn" aria-label="Tiles">▦</button>
+          <button class="tb-btn" aria-label="Details">≡</button>
+        </div>
+      </div>
+
+      <div class="toolbar">
+        <span class="crumb">File</span>
+        <span class="crumb">Edit</span>
+        <span class="crumb">Help</span>
+      </div>
+
+      <div class="content">
+        <!-- Hero -->
+        <section class="hero">
+          <!-- LEFT: headline + chips + PANEL SLOT (under chips) -->
+          <div class="hero-left">
+            <div class="hero-intro">
+             <h1 class="headline">Branding Websites for Music-Minded Folks.</h1>
+  <p class="lede">I design logos and build press-ready, mobile-smart sites for DJs, bands, indie labels, and small studios—playful look, professional finish.</p>
+            <div class="cta-row">
+              <a class="btn-cta primary" href="about.html">About Me</a>
+              <a class="btn-cta" href="#" id="show-case">See My Work</a>
+            </div>
+        </div>
+            <!-- Chip row -->
+            <div class="chips" role="tablist" aria-label="Capabilities">
+  <button class="chip" data-tile="brand-logos" role="tab" aria-selected="false">Branding & Logos</button>
+  <button class="chip" data-tile="web-fe" role="tab" aria-selected="false">Web & Front-end</button>
+  <button class="chip" data-tile="motion" role="tab" aria-selected="false">Motion & Visuals</button>
+  <button class="chip" data-tile="assets" role="tab" aria-selected="false">Assets & Add-ons</button>
+</div>
+
+            <!-- LEFT-COLUMN PANEL SLOT (fills the gap under the chips) -->
+            <div class="panel-slot" id="panel-slot-left" aria-live="polite">
+              <section class="feature-tiles">
+                <!-- Feature tiles share the same LEFT slot; only one visible at a time -->
+                <article id="tile-brand-logos" class="feature-tile" role="tabpanel" hidden>
+  <h4>Branding & Logos</h4>
+  <p>I design clear, memorable marks and type systems that scale—from avatars and stickers to headers and merch.
+  Deliverables can include logo suite (dark/light/mono), usage sheet, and starter brand tokens for the web.</p>
+</article>
+
+<article id="tile-web-fe" class="feature-tile" role="tabpanel" hidden>
+  <h4>Web & Front-end</h4>
+  <p>Press-ready sites for DJs, bands, indie labels, and small studios. Semantic HTML, modern CSS, modular JS, accessibility and mobile performance baked in.
+  I wire real features— audio players, galleries, EPK sections, light CMS/blogs—and hand off clean repos you can extend.</p>
+</article>
+
+<article id="tile-motion" class="feature-tile" role="tabpanel" hidden>
+  <h4>Motion & Visuals</h4>
+  <p>Subtle animation and micro-interactions that feel playful but stay readable. I use After Effects for stingers/loops and CSS/JS for UI motion.
+  Great for intros, section dividers, hover feedback, and quick social clips.</p>
+</article>
+
+<article id="tile-assets" class="feature-tile" role="tabpanel" hidden>
+  <h4>Assets & Add-ons</h4>
+  <p>Support pieces that make sites feel finished: social banners, press images, simple icon sets, and occasional mascots when it fits.
+  Optional easter eggs (dark mode toggles, jiggly icons, gentle idle effects) on request.</p>
+</article>
+
+                <!-- Case study card appears in the SAME LEFT slot -->
+                <article id="tile-case" class="feature-tile case-card" role="tabpanel" hidden>
+  <div class="case-body">
+    <h3 class="case-title">Featured: Branding + Web for Musicians</h3>
+    <p class="case-copy">
+      A small collection of brand marks and web builds for music-minded clients:
+      logos, component libraries, audio players, and press-ready pages.
+    </p>
+    <div class="tag-row">
+      <span class="tag">Branding</span><span class="tag">Logos</span>
+      <span class="tag">Web</span><span class="tag">Front-end</span>
+    </div>
+    <div class="cta-row">
+      <a class="btn-cta primary slim" href="https://miracleravermango.github.io/bruise-cruise-site/" target="_blank" rel="noopener">View on GitHub</a>
+      <a class="btn-cta slim" href="work.html">See more work</a>
+      </div>
+  </div>
+      <img class="case-img" src="assets/brucru-screenshot.png" alt="Bruise Cruise Screenshot">
+    
+</article>
+              </section>
+            </div>
+          </div>
+
+          <!-- RIGHT: mascot ONLY -->
+          <div class="hero-right">
+            <figure class="hero-art">
+              <img class="mascot" src="assets/mascot_mango.png" alt="Kawaii mascot with pastel braids and headphones holding a mango"/>
+            </figure>
+          </div>
+        </section>
+        <!-- /Hero -->
+      </div>
+
+      <div class="win-statusbar" role="status">
+        <span class="status-left">3 items</span>
+        <span class="status-right">Ready</span>
+        <i class="resize-grip" aria-hidden="true"></i>
+
+      </div>
+
+      <div class="resizer" data-resize="se" aria-hidden="true"></div>
+      <button class="resize-grip" data-resize="se" aria-label="Resize"></button>
+    </section>
+    <!-- /Main window -->
+  </main>
+
+  <!-- Taskbar -->
+  <footer class="taskbar" role="contentinfo">
+    <button class="start"><img src="assets/mango_sparkle.png" alt=""><span>Start</span></button>
+    <div class="task-buttons" id="taskButtons"></div>
+    <div class="task-search"><input type="search" placeholder="Type a command..." aria-label="Command search"></div>
+    <div class="tray">
+      <button><img src="assets/closed_mail.png" alt="Mail"></button>
+      <button><img src="assets/headphone_sparkle.png" alt="Headphones"></button> 
+      <button><img src="assets/kawaii_folder.png" alt="Folder"></button>
+    </div>
+    <div class="clock" aria-live="polite">00:00</div>
+  </footer>
+
+  <script src="js/app.js"></script>
+
+    <script>
+(function(){
+  const boot = document.getElementById('boot');
+  const vid  = document.getElementById('bootVid');
+  const app  = document.getElementById('app');
+
+  function revealApp(){
+    app.hidden = false;
+    app.classList.add('is-visible');
+    boot.classList.add('is-hidden');
+    setTimeout(() => boot.remove(), 600);
+  }
+
+  // Use the poster as background to avoid a flash until first frame
+  const posterUrl = vid.getAttribute('poster');
+  if (posterUrl) boot.style.backgroundImage = `url("${posterUrl}")`;
+
+  // Mount the boot overlay on next frame so it fades in
+  requestAnimationFrame(() => {
+    boot.classList.add('mount');
+  });
+
+  let started = false, finished = false;
+
+  // Try autoplay
+  vid.muted = true;
+  vid.play().catch(()=>{});
+
+  // If data is ready, try again (some browsers need a second call)
+  vid.addEventListener('loadeddata', () => vid.play().catch(()=>{}));
+
+  // When video actually starts, fade the video in & drop poster bg
+  vid.addEventListener('playing', () => {
+    started = true;
+    boot.classList.add('video-live');     // makes video opacity:1
+    boot.style.backgroundImage = 'none';
+  });
+
+  // Normal end
+  vid.addEventListener('ended', () => {
+    if (finished) return;
+    finished = true;
+    revealApp();
+  });
+
+  // Fallback: treat “near end” as end (encoders that skip 'ended')
+  vid.addEventListener('timeupdate', () => {
+    if (!finished && vid.duration && (vid.currentTime / vid.duration) >= 0.985) {
+      finished = true; revealApp();
+    }
+  });
+
+  // Safety: if never started (bad codec/path), move on after 1.5s
+  setTimeout(() => { if (!started && !finished) { finished = true; revealApp(); } }, 1500);
+
+  // Safety: if playing but never finishes, hard stop at 8s
+  setTimeout(() => { if (!finished) { finished = true; revealApp(); } }, 8000);
+})();
+</script>
+
+
+</body>
+</html>

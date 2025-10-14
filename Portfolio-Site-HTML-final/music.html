@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Ms. Mango — Music</title>
+  <link rel="stylesheet" href="css/site.cleaned.css"/>
+</head>
+<body>
+ <main class="desktop">
+    <!-- left rail icons -->
+    <nav class="dock">
+      <a class="icon" href="index.html"><img src="assets/mascot_head.svg" alt=""><span>My Computer</span></a>
+      <a class="icon" href="work.html"><img src="assets/kawaii_folder_heart.png" alt=""><span>Work Files</span></a>
+      <a class="icon" href="music.html"><img src="assets/headphone_sparkle.png" alt=""><span>Music Player</span></a>
+      <a class="icon" href="about.html"><img src="assets/opened_sparkle.png" alt=""><span>About_Me.txt</span></a>
+    </nav>
+ </main>
+
+  <footer class="taskbar">
+    <button class="start"><img src="assets/mango_sparkle.png" alt=""><span>Start</span></button>
+        <div class="task-buttons" id="taskButtons"></div>
+
+    </div>
+
+    <div class="task-search"><input type="search" placeholder="Type a command..."></div>
+
+    <div class="tray">
+      <button><img src="assets/closed_mail.png" alt=""></button>
+      <button><img src="assets/headphone_sparkle.png" alt=""></button>
+      <button><img src="assets/kawaii_folder.png" alt=""></button>
+    </div>
+
+    <div class="clock">00:00</div>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script>
+    // Open the JellyPod when this page loads (so it “is” the page)
+    window.addEventListener('DOMContentLoaded', () => {
+      if (window.JellyPod) JellyPod.open();
+    });
+  </script>
+</body>
+</html>

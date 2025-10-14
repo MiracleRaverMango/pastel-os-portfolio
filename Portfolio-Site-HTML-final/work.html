@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Ms. Mango — Work</title>
+  <link rel="stylesheet" href="css/site.cleaned.css"/>
+</head>
+<body>
+  <main class="desktop">
+    <nav class="dock">
+      <a class="icon" href="index.html"><img src="assets/mascot_head.png" alt=""><span>My Computer</span></a>
+      <a class="icon" href="work.html"><img src="assets/kawaii_folder_heart.png" alt=""><span>Work Files</span></a>
+      <a class="icon" href="music.html"><img src="assets/headphone_sparkle.png" alt=""><span>Music Player</span></a> 
+      <a class="icon" href="about.html"><img src="assets/opened_sparkle.png" alt=""><span>About_Me.txt</span></a>
+    </nav>
+
+    <section id="window-work" class="window">
+      <header class="titlebar">
+        <div class="title">Projects Folder</div>
+        <div class="controls">
+          <button class="winbtn" data-action="min">–</button>
+          <button class="winbtn" data-action="max">▢</button>
+          <button class="winbtn danger" data-action="close">✕</button>
+        </div>
+      </header>
+      <!-- Toolbar (Explorer-style) -->
+<div class="win-toolbar">
+  <div class="tb-left">
+    <button class="tb-btn" aria-label="Back">⟨</button>
+    <button class="tb-btn" aria-label="Forward">⟩</button>
+    <button class="tb-btn" aria-label="Up">⤴</button>
+    <button class="tb-btn" aria-label="Refresh">↻</button>
+  </div>
+
+  <!-- Breadcrumb / address bar -->
+  <nav class="tb-crumbs" aria-label="Breadcrumb">
+    <button class="crumb">This PC</button>
+    <span class="crumb-sep">›</span>
+    <button class="crumb">Portfolio</button>
+    <span class="crumb-sep">›</span>
+    <button class="crumb is-current">Projects Folder</button>
+  </nav>
+
+  <div class="tb-right">
+    <button class="tb-btn" aria-label="Tiles">▦</button>
+    <button class="tb-btn" aria-label="Details">≡</button>
+  </div>
+</div>
+
+      <div class="toolbar">
+        <span class="crumb">File</span>
+        <span class="crumb">Edit</span>
+        <span class="crumb">Help</span>
+      </div>
+      <div class="content">
+        <h2 style="margin-top:4px">My Web Projects</h2>
+        <div class="tiles">
+          <a class="tile" href="https://github.com/MiracleRaverMango/bruise-cruise-site" target="_blank" rel="noreferrer">
+            <img src="assets/brucru-logo2.png" alt=""><div>
+              <h4>Bruise Cruise</h4><p>Interactive concept site</p></div>
+          </a>
+          <a class="tile" href="https://github.com/MiracleRaverMango/beatchat-widget" target="_blank" rel="noreferrer">
+            <img src="assets/kawaii_folder_heart.png" alt=""><div>
+              <h4>BeatChat Widget</h4><p>Music chat mini-app</p></div>
+          </a>
+          <a class="tile" href="https://www.miracleravermango.com/" target="_blank" rel="noreferrer">
+            <img src="assets/MangoRecordLogo03.png" alt=""><div>
+              <h4>DJ Ms. Mango</h4><p>Press-ready artist site</p></div>
+          </a>
+        </div>
+      </div>
+      <div class="win-statusbar">
+  <span class="status-left">3 items</span>
+  <span class="status-right">Ready</span>
+</div>
+</div>
+      <div class="resizer" data-resize="se" aria-hidden="true"></div>
+    <button class="resize-grip" data-resize="se" aria-label="Resize"></button>    </section>
+
+  </main>
+
+  <footer class="taskbar">
+    <button class="start"><img src="assets/mango_sparkle.png" alt=""><span>Start</span></button>
+    <div class="task-buttons">
+      <button class="task-btn is-active" data-win="window-work">
+        <img class="task-icon" src="assets/kawaii_folder.png" alt="">
+        <span class="task-label">Projects Folder</span>
+      </button>
+    </div>
+    <div class="task-search"><input type="search" placeholder="Type a command..."></div>
+    <div class="tray">
+      <button><img src="assets/closed_mail.png" alt=""></button>
+      <button><img src="assets/headphone_sparkle.png" alt=""></button> 
+      <button><img src="assets/kawaii_folder.png" alt=""></button>
+    </div>
+    <div class="clock">00:00</div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
