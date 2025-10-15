@@ -1,3 +1,34 @@
+// --- Show boot once per tab; skip fades on revisits
+window.addEventListener('DOMContentLoaded', () => {
+    const BOOT_KEY = '__os_boot_shown__';
+    const hasBooted = sessionStorage.getItem(BOOT_KEY) === '1';
+
+    if (hasBooted) {
+        // Mark this tab so CSS can disable intro fades
+        document.documentElement.classList.add('has-booted');
+
+        // Remove any boot element and boot classes immediately
+        const boot = document.querySelector('#boot, #bootScreen, .boot, .boot-screen, [data-boot]');
+        if (boot) boot.remove();
+        document.documentElement.classList.remove('is-booting');
+        document.body.classList.remove('is-booting');
+
+        // Belt & suspenders: kill lingering intro classes/inline styles if present
+        ['.desktop', '.dock', '.taskbar', '.window', '.hero', '.icon-grid', '.icons'].forEach(sel => {
+            document.querySelectorAll(sel).forEach(el => {
+                el.classList.remove('fade-in', 'intro', 'boot-fade');
+                el.style.animation = 'none';
+                el.style.transition = 'none';
+                el.style.opacity = ''; // let CSS default apply (we’ll force 1 via CSS below)
+            });
+        });
+        return; // skip any loader logic that runs later in your file
+    }
+
+    // First visit in this tab → allow your existing boot to run once
+    sessionStorage.setItem(BOOT_KEY, '1');
+});
+
 /* =========================================================
    Mango OS — Core JS (clean refactor)
    ========================================================= */
@@ -655,3 +686,4 @@ window.JellyPod = (() => {
         close() { if (!wrap) return; audio && audio.pause(); wrap.style.display = 'none'; hidden = true; pill?.classList.remove('is-active'); }
     };
 })();
+
