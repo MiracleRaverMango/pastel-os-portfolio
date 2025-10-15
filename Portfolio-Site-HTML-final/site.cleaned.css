@@ -1,0 +1,2851 @@
+:root {
+  --blue-1: #a7d0ff;
+  --blue-2: #72b7ff;
+  --pink-1: #ffd6ec;
+  --pink-2: #f5a7d7;
+  --task: #8fc4ff;
+  --task-deep: #6fb1f0;
+  --glass: rgba(255, 255, 255, .55);
+  --ink: #3b3355;
+  --ink-soft: #5a4e7a;
+  --shadow: 0 10px 30px rgba(0, 0, 0, .18);
+  --round: 14px;
+  --round-sm: 10px;
+  --taskbar-h: 64px;
+}
+
+* {
+  box-sizing: border-box
+}
+
+body {
+  margin: 0;
+  font: 16px/1.4 ui-rounded, "Nunito", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(1200px 800px at 50% 120%, #ffd1e6 10%, #ffc0e0 35%, #ffb2da 55%, #ff9ed3 75%, #ffa8da 100%),
+    linear-gradient(180deg, #ffd6ec, #ffd6ec);
+  overflow: hidden;
+}
+
+/* Desktop wallpaper layer (under everything) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    url("/assets/bg-clouds.jpg") center/cover no-repeat,
+    radial-gradient(1200px 800px at 50% 120%, #ffd1e6 10%, #ffc0e0 35%, #ffb2da 55%, #ff9ed3 75%, #ffa8da 100%);
+  filter: saturate(1.05);
+  z-index: -1;
+}
+
+/* Desktop icons (left rail) */
+.desktop {
+  position: fixed;
+  inset: 0;
+  padding: 18px 18px 88px 18px;
+}
+
+.dock {
+  position: absolute;
+  left: 142px;
+  top: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.icon {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 120px;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.icon img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  background: linear-gradient(180deg, #fff7, #fff0);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  padding: 12px;
+}
+
+.icon span {
+  font-size: 12px;
+  background: rgba(255, 255, 255, .6);
+  padding: 3px 8px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
+  white-space: nowrap;
+  /* keep "My Computer" on one line */
+  display: inline-block;
+  text-align: center;
+}
+
+/* Window */
+.window {
+  position: relative;
+  left: 50%;
+  top: 120px;
+  width: 820px;
+  min-width: 560px;
+  max-width: 1100px;
+  height: 580px;
+  background: linear-gradient(180deg, #ffe6f4 0, #ffd3ee 40%, #ffc8ea 100%);
+  border-radius: 22px;
+  border: 1.5px solid #88b7ff;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.window.is-hidden {
+  display: none;
+}
+
+
+
+/* Titlebar */
+.titlebar {
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px 0 16px;
+  background: linear-gradient(180deg, #bfe0ff 0, #99ccff 50%, #91c4ff 100%);
+  border-bottom: 1px solid #7db6ff;
+  position: relative;
+}
+
+.title {
+  font-weight: 700;
+  letter-spacing: .2px;
+  color: #274064;
+}
+
+.controls {
+  display: flex;
+  gap: 8px;
+}
+
+.winbtn {
+  width: 32px;
+  height: 28px;
+  border: 0;
+  border-radius: 8px;
+  background: linear-gradient(180deg, #fff, #e6f2ff);
+  color: #274064;
+  font-weight: 700;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, .08), inset 0 1px 0 rgba(255, 255, 255, .7);
+  cursor: pointer;
+}
+
+.winbtn.danger {
+  background: linear-gradient(180deg, #ffd4e4, #ffc1da);
+  color: #5b1630;
+}
+
+/* subtle “shine” streak */
+.titlebar::after {
+  content: "";
+  position: absolute;
+  left: 25%;
+  top: 10px;
+  width: 50%;
+  height: 18px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .65), transparent);
+  filter: blur(6px);
+  pointer-events: none;
+}
+
+/* Toolbar row */
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: linear-gradient(180deg, #ffeef9, #ffe2f5);
+  border-bottom: 1px solid #f0c1e3;
+}
+
+.crumb {
+  font-size: 12px;
+  background: rgba(255, 255, 255, .8);
+  box-shadow: inset 0 1px 0 #fff, 0 1px 4px rgba(0, 0, 0, .1);
+}
+
+/* Window content */
+.content {
+  padding: 16px 18px 18px;
+  overflow: auto;
+  flex: 1;
+}
+
+/* Cards & tiles for Work page */
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 28px;
+}
+
+.tile {
+  background: linear-gradient(180deg, #fff, #f6f0ff);
+  border-radius: 18px;
+  padding: 16px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .12), inset 0 1px 0 #fff;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--ink);
+  width: 225px;
+}
+
+.tile img {
+  width: 100px;
+  height: 100px;
+}
+
+.tile h4 {
+  margin: 0 0 2px;
+  font-size: 15px
+}
+
+.tile p {
+  margin: 0;
+  font-size: 12px;
+  color: var(--ink-soft)
+}
+
+/* Music card */
+.now-playing {
+  max-width: 540px;
+  background: linear-gradient(180deg, #fff, #f3eaff);
+  border-radius: 18px;
+  padding: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .12);
+}
+
+.now-playing header {
+  font-weight: 800;
+  margin-bottom: 8px
+}
+
+audio {
+  width: 100%;
+}
+
+/* Notepad look */
+.notepad {
+  max-width: 720px;
+  margin: 0 auto;
+  background: #fff8f1;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .12), inset 0 0 0 1px #ffe0b8;
+  position: relative;
+  padding: 20px 18px 22px;
+}
+
+.notepad:before {
+  /* left margin band */
+  content: "";
+  position: absolute;
+  left: 58px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #ffbfbf;
+}
+
+.notepad .paper {
+  background:
+    repeating-linear-gradient(#fff0, #fff0 28px, rgba(0, 0, 0, .06) 29px, rgba(0, 0, 0, .06) 30px),
+    linear-gradient(#fffdf9, #fffdf9);
+  border-radius: 12px;
+  padding: 18px 22px 22px 72px;
+}
+
+/* Taskbar */
+.taskbar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 64px;
+  display: grid;
+  grid-template-columns: auto 1fr auto auto auto;
+  gap: 14px;
+  padding: 10px 14px;
+  background: linear-gradient(180deg, var(--task) 0, var(--task-deep) 100%);
+  border-top: 1px solid rgba(0, 0, 0, .08);
+  box-shadow: 0 -10px 20px rgba(0, 0, 0, .12) inset, 0 -2px 0 rgba(255, 255, 255, .25) inset;
+  overflow: hidden;
+  /* never show a bar on the bar */
+  align-items: center;
+  /* keep everything vertically centered */
+  overflow-x: auto;
+  overflow-y: hidden;
+  -ms-overflow-style: none;
+  /* IE/Edge (legacy) */
+  scrollbar-width: none;
+  /* Firefox */
+  min-width: 360px;
+
+}
+
+.start {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 44px;
+  padding: 0 16px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #d7ffe8, #b9f7de);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, .08);
+  border: 1px solid rgba(0, 0, 0, .08);
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.start img {
+  width: 50px;
+  height: 50px
+}
+
+.task-buttons {
+  display: flex;
+  gap: 12px;
+  padding-right: 8px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -ms-overflow-style: none;
+  /* IE/Edge (legacy) */
+  scrollbar-width: none;
+  /* Firefox */
+
+}
+
+.task-btn {
+  height: 44px;
+  min-width: 160px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 14px;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, .08);
+  background: linear-gradient(180deg, #e9f2ff, #d9ebff);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, .12), inset 0 1px 0 #fff;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.task-btn .task-icon {
+  width: 18px;
+  height: 18px
+}
+
+.task-btn.is-active {
+  box-shadow: inset 0 6px 12px rgba(0, 0, 0, .28), inset 0 -1px 0 rgba(255, 255, 255, .28);
+}
+
+.task-search input {
+  width: 100%;
+  height: 44px;
+  border: 0;
+  outline: 0;
+  border-radius: 16px;
+  padding: 0 16px;
+  background: linear-gradient(180deg, #f7ecff, #f0dcff);
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, .12), 0 1px 0 rgba(255, 255, 255, .6);
+  color: var(--ink);
+}
+
+.tray {
+  display: flex;
+  gap: 10px
+}
+
+.tray button {
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 10px;
+  cursor: pointer;
+  background: linear-gradient(180deg, #fff, #eef6ff);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, .08), inset 0 1px 0 rgba(255, 255, 255, .7);
+}
+
+.tray img {
+  width: 18px;
+  height: 18px
+}
+
+.clock {
+  width: 110px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #18324e;
+  font-weight: 900;
+  letter-spacing: .5px;
+  background: linear-gradient(180deg, #c7e0ff, #a7ceff);
+  border-radius: 16px;
+  box-shadow: inset 0 10px 24px rgba(0, 0, 0, .25), 0 1px 0 rgba(255, 255, 255, .6);
+  border: 1px solid rgba(0, 0, 0, .08);
+}
+
+/* Utility */
+.hide {
+  display: none !important;
+}
+
+
+/* Resize handle (bottom-right) */
+/* bottom-right resize hit-area (clickable, but invisible) */
+.window .resizer {
+  position: absolute;
+  right: 6px;
+  bottom: 6px;
+  width: 22px;
+  height: 22px;
+  cursor: se-resize;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  z-index: 2;
+  /* below the decorative grip */
+}
+
+
+
+
+
+
+.window.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+/* --- Window states ------------------------------------------------------ */
+.window.minimized {
+  display: none !important;
+}
+
+.window.closed {
+  display: none !important;
+}
+
+
+/* Pressed/active impression for the taskbar button */
+.taskbar .task-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .35rem .7rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, .28);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .7) inset,
+    0 6px 14px rgba(0, 0, 0, .10);
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+
+.taskbar .task-btn.is-active {
+  background: rgba(255, 255, 255, .55);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .2) inset,
+    0 1px 0 rgba(255, 255, 255, .8);
+  transform: translateY(1px);
+}
+
+/* Make sure the desktop background always shows (fixes the “black band”) */
+html,
+body {
+  height: 100%;
+}
+
+.desktop {
+  min-height: 100%;
+  background:
+    radial-gradient(1200px 600px at 50% -200px, rgba(255, 255, 255, .55), rgba(255, 255, 255, 0)),
+    url("/assets/bg-clouds.jpg") center/cover fixed,
+    linear-gradient(#ffb7d2, #ff9cc6);
+}
+
+/* ======= Window maximize geometry ======= */
+.window.maximized {
+  position: fixed !important;
+  inset: 0 0 var(--taskbar-h, 64px) 0 !important;
+  width: 100vw !important;
+  height: calc(100vh - var(--taskbar-h, 64px)) !important;
+  margin: 0 !important;
+  transform: none !important;
+  border-radius: 0 !important;
+}
+
+/* Ensure normal state starts centered but can be dragged later */
+.window {
+  transform: translateX(-50%);
+}
+
+/* Stronger “pressed in” impression for the active task pill */
+.task-btn.is-active {
+  background: rgba(255, 255, 255, .58);
+  box-shadow:
+    inset 0 10px 22px rgba(0, 0, 0, .28),
+    inset 0 -1px 0 rgba(255, 255, 255, .28);
+}
+
+/* Minimized pill — not pressed */
+.task-btn.is-min {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, .12), inset 0 1px 0 #fff;
+  transform: none;
+}
+
+/* --- maximize helpers --- */
+:root {
+  --taskbar-h: 84px;
+}
+
+/* fallback; JS overwrites on load */
+.desktop {
+  padding-bottom: var(--taskbar-h);
+}
+
+/* keep content above the taskbar */
+.window.maximized {
+  max-width: none;
+  /* make sure any earlier max limits don't cap it */
+  max-height: none;
+  border-radius: 14px;
+  /* keep your nice rounded look when full-screen */
+}
+
+/* Windows-XP style resize grip: 3-row triangular dots (no tile) */
+.resize-grip {
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+  width: 14px;
+  /* visual box only, dots draw via pseudo elements */
+  height: 14px;
+  pointer-events: none;
+  /* let your resize logic handle mouse events */
+  background: none;
+  /* <- kill the white plate */
+  border: 0;
+  box-shadow: none;
+}
+
+/* dark dots (flipped triangle) */
+.resize-grip::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 2px;
+  height: 2px;
+  border-radius: 1px;
+  background: #6f97ff;
+  /* flipped: bottom row 3 dots → top-left diagonal */
+  box-shadow:
+    4px 0 0 0 #6f97ff,
+    8px 0 0 0 #6f97ff,
+    4px -4px 0 0 #6f97ff,
+    8px -4px 0 0 #6f97ff,
+    8px -8px 0 0 #6f97ff;
+}
+
+/* highlight layer offset (emboss) — flipped too */
+.resize-grip::before {
+  content: "";
+  position: absolute;
+  right: -1px;
+  bottom: 1px;
+  width: 2px;
+  height: 2px;
+  border-radius: 1px;
+  background: #fff;
+  opacity: 0.9;
+  box-shadow:
+    4px 0 0 0 #fff,
+    8px 0 0 0 #fff,
+    4px -4px 0 0 #fff,
+    8px -4px 0 0 #fff,
+    8px -8px 0 0 #fff;
+}
+
+
+/* --- Toolbar shell ------------------------------------------------------- */
+.win-toolbar {
+  padding: 8px 10px;
+  border-bottom: 1px solid rgba(90, 120, 255, .25);
+  background:
+    linear-gradient(180deg, #ffe9f3 0%, #fff7fa 60%, #ffeef6 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .8);
+}
+
+/* left/right groups */
+.win-toolbar .tb-left,
+.win-toolbar .tb-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* --- Toolbar buttons (Back/Forward/Up/Refresh, View toggles) ------------- */
+.tb-btn {
+  min-width: 28px;
+  height: 28px;
+  padding: 0 8px;
+  border: 1px solid rgba(107, 134, 255, .35);
+  background:
+    linear-gradient(180deg, #ffffff 0%, #f6f7ff 55%, #ebefff 100%);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, .9) inset,
+    0 1px 2px rgba(50, 70, 180, .08);
+  color: #5d6b9b;
+  font-weight: 700;
+  line-height: 26px;
+  transition: transform .04s ease, box-shadow .15s ease, background .15s ease;
+}
+
+.tb-btn:hover {
+  background: linear-gradient(180deg, #fff 0%, #faffff 40%, #eef5ff 100%);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, .95) inset,
+    0 0 0 2px rgba(130, 160, 255, .15);
+}
+
+.tb-btn:active {
+  transform: translateY(1px);
+}
+
+/* --- Breadcrumb / address bar ------------------------------------------- */
+.tb-crumbs {
+  gap: 8px;
+  min-width: 180px;
+  padding: 3px 6px 3px 8px;
+  border: 1px solid rgba(107, 134, 255, .3);
+  border-radius: 12px;
+  background:
+    linear-gradient(180deg, #ffffff 0%, #f7f9ff 70%, #eef2ff 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .85);
+}
+
+.crumb {
+  border: 1px solid transparent;
+  background: transparent;
+  color: #43507b;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+  transition: background .15s ease, border-color .15s ease;
+  white-space: nowrap;
+}
+
+.crumb:hover {
+  background: rgba(120, 150, 255, .10);
+  border-color: rgba(120, 150, 255, .25);
+}
+
+.crumb.is-current {
+  color: #1f2d62;
+  background: rgba(120, 150, 255, .16);
+  border-color: rgba(120, 150, 255, .28);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .6) inset;
+}
+
+.crumb-sep {
+  color: #9aa6d6;
+}
+
+/* --- Optional status bar ------------------------------------------------- */
+.win-statusbar {
+  border-top: 1px solid rgba(90, 120, 255, .22);
+  background: linear-gradient(180deg, #f8faff 0%, #eef2ff 100%);
+  font-size: .9rem;
+  color: #5966a3;
+}
+
+.crumb:active {
+  transform: translateY(1px);
+}
+
+.task-buttons::-webkit-scrollbar {
+  display: none;
+  /* Chrome/Safari */
+}
+
+/* keep the search box from forcing vertical overflow in narrow cases */
+.taskbar .task-search {
+  min-width: 0;
+  justify-self: end;
+}
+
+/* optional: tiny breathing room so pills never clip the taskbar edge */
+.taskbar .task-buttons {
+  padding-bottom: 2px;
+}
+
+.taskbar .task-search input {
+  width: 200px;
+  /* smaller */
+  font-size: 0.9rem;
+  padding: 3px 8px;
+
+}
+
+
+
+/* --- Music window bits --- */
+.player-card {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding: 16px;
+  border-radius: 16px;
+  background: linear-gradient(#ffeef9, #ffdff0);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .7), 0 8px 24px rgba(0, 0, 0, .06);
+  max-width: 640px;
+}
+
+.player-card .album {
+  width: 84px;
+  height: 84px;
+  flex: 0 0 84px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, .06);
+  display: grid;
+  place-items: center;
+}
+
+.player-card .album img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+
+.player-card .meta h3 {
+  margin: 0 0 6px;
+  font-size: 18px;
+}
+
+.player-card audio {
+  width: 100%;
+}
+
+.player-card .more {
+  margin: .5rem 0 0;
+}
+
+/* Explorer-ish toolbar + statusbar (use your theme colors) */
+.win-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, .06);
+}
+
+.tb-left,
+.tb-right {
+  display: flex;
+  gap: 6px;
+}
+
+.tb-btn {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 0;
+  background: #fff;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .8), 0 1px 3px rgba(0, 0, 0, .08) inset;
+}
+
+.tb-crumbs {
+  flex: 1;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.crumb {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 0;
+  background: #fff;
+}
+
+.crumb-sep {
+  opacity: .4;
+}
+
+.win-statusbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 10px;
+  border-top: 1px solid rgba(0, 0, 0, .06);
+  background: linear-gradient(#e2ecff, #d9e6ff);
+  border-bottom-left-radius: 14px;
+  border-bottom-right-radius: 14px;
+}
+
+/* Task pill pressed/min look hooks (if not already present) */
+.task-btn.is-active {
+  transform: translateY(1px);
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, .15);
+}
+
+.task-btn.is-min {
+  opacity: .7;
+}
+
+/* ===== Kawaii Player App ===== */
+.player-app {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 100%;
+}
+
+.player-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: linear-gradient(#f4f6ff, #eef3ff);
+  border-radius: 12px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .7), 0 2px 6px rgba(0, 0, 0, .05);
+}
+
+.pill {
+  border: 0;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .9), 0 2px 6px rgba(0, 0, 0, .08);
+}
+
+.pill.primary {
+  background: linear-gradient(#ffedf8, #ffe2f2);
+}
+
+.now-meta {
+  display: flex;
+  flex-direction: column;
+  margin-left: 6px;
+}
+
+.track-title {
+  font-weight: 700;
+}
+
+.track-artist {
+  opacity: .7;
+  font-size: .9rem;
+}
+
+.vol {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.vol-slider {
+  width: 120px;
+  accent-color: #7aa9ff;
+}
+
+.player-main {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 16px;
+  padding: 8px 0 12px 0;
+  flex: 1;
+  min-height: 0;
+}
+
+.cover {
+  border-radius: 16px;
+  background: linear-gradient(#fff, #f7f7ff);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .06);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.cover-img {
+  width: 160px;
+  height: 160px;
+  object-fit: contain;
+}
+
+.transport {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.time {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 10px;
+}
+
+.seek {
+  width: 100%;
+  accent-color: #7aa9ff;
+}
+
+.playlist {
+  margin: 0;
+  padding: 8px;
+  list-style: none;
+  border-radius: 14px;
+  background: linear-gradient(#fff, #f7f5ff);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .7), 0 8px 24px rgba(0, 0, 0, .06);
+  overflow: auto;
+  max-height: 220px;
+}
+
+.track {
+  padding: 10px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.track:hover {
+  background: #f2f7ff;
+}
+
+.track.is-active {
+  background: #e9f0ff;
+  font-weight: 600;
+}
+
+.player-app .win-statusbar {
+  margin-top: auto;
+}
+
+/* Make the window content breathe on tiny widths */
+@media (max-width: 820px) {
+  .player-main {
+    grid-template-columns: 1fr;
+  }
+
+  .cover {
+    order: 2;
+  }
+}
+
+
+/* ===========================
+   Jelly Player (Gummi Disc + Bubble Deck)
+   =========================== */
+.page-wrap.center {
+  display: flex;
+  min-height: calc(100vh - 80px);
+  align-items: center;
+  justify-content: center;
+}
+
+.jp {
+  --glass: rgba(255, 255, 255, .55);
+  --ink: #5a68a8;
+  --ink-soft: #7b88c7;
+  --mint: #cfe9ff;
+  --pink: #ffd9f2;
+  --blue: #cfe1ff;
+  --shadow: 0 10px 30px rgba(120, 140, 255, .25);
+  width: 360px;
+  max-width: 92vw;
+  padding: 18px 16px 14px;
+  border-radius: 24px;
+  background:
+    radial-gradient(120% 140% at 80% 10%, rgba(255, 255, 255, .9) 0%, rgba(255, 255, 255, .55) 40%, rgba(255, 255, 255, .35) 100%),
+    linear-gradient(145deg, var(--pink) 0%, #efefff 60%, var(--blue) 100%);
+  box-shadow:
+    inset 0 2px 10px rgba(255, 255, 255, .6),
+    inset 0 -10px 24px rgba(180, 200, 255, .35),
+    var(--shadow);
+  backdrop-filter: blur(6px);
+  position: relative;
+}
+
+/* Disc (gummi) */
+.jp-disc {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 4px auto 10px;
+  background:
+    radial-gradient(35% 40% at 35% 30%, rgba(255, 255, 255, .9), rgba(255, 255, 255, .2) 62%, rgba(255, 255, 255, 0) 70%),
+    conic-gradient(from 0deg, #f8b4ff, #a9d4ff, #9ef1ff, #ffc7e6, #f8b4ff);
+  box-shadow:
+    inset 0 8px 18px rgba(255, 255, 255, .8),
+    inset 0 -18px 26px rgba(100, 120, 255, .25),
+    0 10px 20px rgba(100, 120, 255, .18);
+  position: relative;
+  transition: transform .2s cubic-bezier(.2, .8, .2, 1);
+}
+
+.jp-disc::after {
+  /* rim glow */
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background: radial-gradient(70% 70% at 30% 30%, rgba(255, 255, 255, .8), rgba(255, 255, 255, 0) 60%);
+  pointer-events: none;
+}
+
+.jp-disc__label {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #fff 0 45%, #e6eaff 60%);
+  box-shadow: inset 0 6px 10px rgba(150, 170, 255, .35);
+}
+
+.jp.is-playing .jp-disc {
+  animation: jp-spin 4.8s linear infinite;
+}
+
+/* Meta */
+.jp-meta {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.jp-title {
+  font-weight: 800;
+  color: #2a2d66;
+  letter-spacing: .2px;
+}
+
+.jp-artist {
+  font-weight: 600;
+  color: var(--ink-soft);
+  font-size: .9rem;
+  margin-top: 2px;
+}
+
+/* Deck controls */
+.jp-deck {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 10px 0 12px;
+}
+
+.jp-btn {
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 22px;
+  background: linear-gradient(145deg, #ffffff 0%, #ebf0ff 100%);
+  box-shadow:
+    inset 0 2px 8px rgba(255, 255, 255, .9),
+    inset 0 -8px 16px rgba(120, 140, 255, .25),
+    0 4px 10px rgba(120, 140, 255, .25);
+  color: #5a66d8;
+  font-weight: 700;
+  transition: transform .06s ease, box-shadow .15s ease;
+}
+
+.jp-btn:hover {
+  transform: translateY(-1px);
+}
+
+.jp-btn:active {
+  box-shadow: inset 0 4px 14px rgba(120, 140, 255, .35);
+}
+
+.jp-play {
+  width: 58px;
+}
+
+/* Timeline */
+.jp-timeline {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 10px;
+}
+
+.jp-time {
+  font-size: .78rem;
+  color: #6d78b6;
+  font-weight: 700;
+  opacity: .9;
+}
+
+/* Jelly seek (bubble deck style) */
+.jp-seek {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 14px;
+  border-radius: 999px;
+  width: 100%;
+  background:
+    linear-gradient(145deg, #fff 0%, #ebf0ff 60%, #e1e9ff 100%);
+  box-shadow:
+    inset 0 2px 8px rgba(255, 255, 255, .9),
+    inset 0 -10px 18px rgba(120, 140, 255, .25),
+    0 4px 10px rgba(120, 140, 255, .2);
+  outline: none;
+  position: relative;
+}
+
+.jp-seek::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 35%, #ffffff 0 40%, rgba(255, 255, 255, .7) 60%),
+    radial-gradient(circle at 60% 65%, rgba(142, 171, 255, .55), rgba(142, 171, 255, 0) 55%);
+  box-shadow: 0 6px 12px rgba(120, 140, 255, .35);
+  border: 0;
+  cursor: pointer;
+}
+
+.jp-seek::-moz-range-thumb {
+  /* Firefox */
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 0;
+  background: radial-gradient(circle at 35% 35%, #ffffff 0 40%, rgba(255, 255, 255, .7) 60%);
+  box-shadow: 0 6px 12px rgba(120, 140, 255, .35);
+}
+
+/* Playlist */
+.jp-mini-toggle {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  width: 28px;
+  height: 28px;
+  border-radius: 12px;
+  border: 0;
+  background: linear-gradient(145deg, #fff, #eef2ff);
+  box-shadow: inset 0 2px 8px rgba(255, 255, 255, .9), inset 0 -8px 16px rgba(120, 140, 255, .25);
+  color: #6b74c2;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.jp-list {
+  margin: 12px 0 0;
+  padding: 8px;
+  list-style: none;
+  border-radius: 16px;
+  background: linear-gradient(145deg, #fff, #eef2ff);
+  box-shadow: inset 0 2px 8px rgba(255, 255, 255, .9), inset 0 -10px 18px rgba(120, 140, 255, .25);
+  max-height: 220px;
+  overflow: auto;
+}
+
+.jp-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 8px;
+  border-radius: 12px;
+  cursor: pointer;
+  color: #2a2d66;
+  font-weight: 700;
+}
+
+.jp-list li:hover {
+  background: rgba(120, 140, 255, .08);
+}
+
+.jp-list .jp-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #8aa6ff;
+  box-shadow: 0 0 0 3px rgba(138, 166, 255, .3) inset;
+}
+
+.jp-list .is-active .jp-dot {
+  background: #4b64ff;
+}
+
+/* Helper */
+@media (max-width:420px) {
+  .jp {
+    width: 320px;
+  }
+
+  .jp-disc {
+    width: 108px;
+    height: 108px;
+  }
+}
+
+
+/* ---------------------------------------------
+   JellyPod Mini (compact floating music player)
+   --------------------------------------------- */
+.jellypod {
+  position: fixed;
+  inset: auto auto 92px 92px;
+  /* bottom-left by default */
+  width: 360px;
+  user-select: none;
+  z-index: 9999;
+  /* always above your windows */
+  pointer-events: auto;
+}
+
+.jellypod__card {
+  position: relative;
+  padding: 20px 22px 18px;
+  border-radius: 26px;
+  background: radial-gradient(120% 140% at 20% 10%, rgba(255, 255, 255, .9), rgba(245, 235, 255, .78) 60%, rgba(230, 240, 255, .72));
+  box-shadow:
+    0 18px 40px rgba(86, 116, 255, .18),
+    inset 0 1px 0 rgba(255, 255, 255, .9),
+    inset 0 -6px 18px rgba(110, 140, 255, .12);
+  backdrop-filter: blur(8px);
+}
+
+.jellypod__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  gap: 10px;
+  cursor: grab;
+}
+
+.jellypod__drag {
+  flex: 1;
+  height: 22px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .55), rgba(255, 255, 255, .25));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .8), inset 0 -3px 8px rgba(120, 140, 200, .25);
+}
+
+.jellypod__close {
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 50%;
+  background: radial-gradient(120% 120% at 30% 20%, #f0c5ea, #f654ff);
+  color: #5b3450;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 14px rgba(255, 120, 160, .28), inset 0 1px 0 rgba(255, 255, 255, .7);
+}
+
+/* Disc */
+.jellypod__disc-wrap {
+  display: grid;
+  place-items: center;
+  margin: 6px 0 12px;
+}
+
+.jellypod__disc {
+  --size: 124px;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  background:
+    radial-gradient(40% 40% at 55% 45%, rgba(255, 255, 255, .85), rgba(255, 255, 255, 0) 55%),
+    conic-gradient(from 0deg,
+      #ffd7ff, #d8ecff, #c6ffef, #fff3c4, #ffd7ff);
+  box-shadow:
+    0 10px 22px rgba(121, 119, 255, .25),
+    inset 0 6px 18px rgba(255, 255, 255, .7),
+    inset 0 -10px 22px rgba(120, 140, 220, .22);
+  position: relative;
+}
+
+.jellypod__disc::after {
+  /* center label */
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #fff, #e5ecff);
+  box-shadow: inset 0 0 0 6px rgba(255, 255, 255, .5);
+}
+
+/* Glow pulse when playing */
+.jellypod.is-playing .jellypod__disc {
+  animation: jp-spin 9s linear infinite;
+}
+
+.jellypod__pulse {
+  width: 100%;
+  height: 12px;
+  border-radius: 999px;
+  margin: 4px 0 10px;
+  background: linear-gradient(90deg, rgba(120, 150, 255, .18), rgba(255, 180, 240, .18));
+  filter: blur(1px);
+  opacity: .6;
+}
+
+.jellypod.is-playing .jellypod__pulse {
+  animation: jp-pulse 1.6s ease-in-out infinite;
+}
+
+/* Title/artist */
+.jellypod__meta {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.jellypod__title {
+  font-weight: 800;
+  color: #2c2a5b;
+  letter-spacing: .2px;
+  text-shadow: 0 1px 0 #fff;
+}
+
+.jellypod__artist {
+  margin-top: 2px;
+  color: #5e6690;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* Controls */
+.jellypod__controls {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+
+.jp-btn {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background: radial-gradient(120% 120% at 30% 20%, #f0c5ea, #f654ff);
+
+  box-shadow: 0 8px 18px rgba(120, 140, 220, .25), inset 0 1px 0 rgba(255, 255, 255, .85), inset 0 -6px 12px rgba(120, 140, 220, .2);
+  color: #4050a8;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.jp-btn:active {
+  transform: translateY(1px);
+}
+
+/* Progress */
+.jellypod__seek {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 10px;
+}
+
+.jp-time {
+  font: 600 12px/1 system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  color: #6a6fa3;
+  text-shadow: 0 1px 0 #fff;
+}
+
+input.jp-range {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 12px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #eaf0ff, #d9e2ff);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .9), inset 0 -4px 8px rgba(130, 150, 220, .22);
+}
+
+input.jp-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: radial-gradient(120% 120% at 30% 20%, #fff, #eaf1ff);
+  box-shadow: 0 8px 16px rgba(100, 120, 220, .25), inset 0 1px 0 rgba(255, 255, 255, .95);
+  margin-top: -5px;
+}
+
+input.jp-range::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border: none;
+  border-radius: 50%;
+  background: radial-gradient(120% 120% at 30% 20%, #fff, #eaf1ff);
+  box-shadow: 0 8px 16px rgba(100, 120, 220, .25), inset 0 1px 0 rgba(255, 255, 255, .95);
+}
+
+/* Dragging cursor */
+.jellypod.dragging .jellypod__header,
+.jellypod.dragging .jellypod__drag {
+  cursor: grabbing;
+}
+
+/* Animations */
+
+@keyframes jp-pulse {
+
+  0%,
+  100% {
+    transform: scaleX(.98);
+    opacity: .45;
+  }
+
+  50% {
+    transform: scaleX(1.02);
+    opacity: .85;
+  }
+}
+
+/* ==== JellyPod "Berry Jelly" skin + static shine ==== */
+.jellypod--berry .jellypod__card {
+  /* more translucent & purple-berry tint */
+  background:
+    radial-gradient(120% 160% at 18% 10%, rgba(255, 255, 255, .80), rgba(255, 255, 255, .62) 40%, rgba(240, 215, 255, .46)),
+    linear-gradient(180deg, rgba(213, 170, 255, .42), rgba(160, 190, 255, .28));
+  border: 1px solid rgba(150, 120, 220, .28);
+  backdrop-filter: blur(10px);
+  box-shadow:
+    0 22px 48px rgba(110, 70, 210, .20),
+    inset 0 1px 0 rgba(255, 255, 255, .95),
+    inset 0 -8px 18px rgba(120, 90, 210, .16);
+}
+
+/* non-animated glassy “shine” on the card cap */
+.jellypod--berry .jellypod__card::before {
+  left: 16px;
+  right: 16px;
+  top: 10px;
+  height: 32px;
+  border-radius: 18px;
+  background: radial-gradient(70% 180% at 20% 0%, rgba(255, 255, 255, .85), rgba(255, 255, 255, .35) 60%, rgba(255, 255, 255, 0));
+  filter: blur(.3px);
+}
+
+/* disc palette nudged toward berry/candy hues */
+.jellypod--berry .jellypod__disc {
+  background:
+    radial-gradient(40% 40% at 55% 45%, rgba(255, 255, 255, .9), rgba(255, 255, 255, 0) 55%),
+    conic-gradient(from 0deg,
+      #ffd6f6, #e1d0ff, #c8ecff, #d0ffe9, #fff3c8, #ffd6f6);
+}
+
+/* taskbar pill fallback look (only used if your theme lacks one) */
+.task-buttons .task-pill--music {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: 6px 12px;
+  margin: 0 8px 0 0;
+  border: 0;
+  border-radius: 12px;
+  cursor: pointer;
+  background: linear-gradient(180deg, #eff4ff, #dae6ff);
+  box-shadow: 0 4px 12px rgba(110, 140, 220, .25), inset 0 1px 0 #fff;
+  color: #334;
+  font: 600 13px/1 system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+
+.task-buttons .task-pill--music.is-active {
+  background: linear-gradient(180deg, #dfe8ff, #c6d8ff);
+  box-shadow: inset 0 1px 0 #fff, inset 0 -6px 14px rgba(110, 140, 220, .28);
+}
+
+.task-buttons .task-pill--music .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #6b7cff;
+  box-shadow: 0 0 0 2px #fff inset;
+}
+
+
+/* ==== JellyPod: punchier glass & glow ==== */
+.jellypod {
+  /* keep what you have, just stronger */
+  --berry: 255 115 172;
+  /* berry tint */
+  --glass: 255 255 255 / .22;
+  /* card fill */
+  --glass-edge: 255 255 255 / .85;
+  /* highlight edge */
+  --shadow: 27 17 79 / .35;
+  /* soft indigo drop */
+  --shine: 255 255 255;
+  /* white for shine */
+}
+
+.jellypod__card {
+  background: radial-gradient(100% 100% at 25% 0%,
+      rgb(var(--glass)) 0%,
+      rgba(255, 255, 255, .14) 40%,
+      rgba(255, 255, 255, .10) 100%);
+  backdrop-filter: blur(18px) saturate(1.25);
+  -webkit-backdrop-filter: blur(18px) saturate(1.25);
+  border: 1px solid rgba(var(--shine), .45);
+  box-shadow:
+    0 14px 40px rgba(var(--shadow)),
+    inset 0 1px 0 rgba(var(--shine), .65),
+    inset 0 -1px 0 rgba(0, 0, 0, .06);
+}
+
+/* subtle, non-animated “wet” shine across the card */
+.jellypod__card::before {
+  content: "";
+  position: absolute;
+  inset: 8px 10px auto 10px;
+  height: 42px;
+  border-radius: 24px;
+  background: linear-gradient(180deg,
+      rgba(var(--shine), .85) 0%,
+      rgba(var(--shine), .35) 40%,
+      rgba(255, 255, 255, 0) 100%);
+  pointer-events: none;
+  filter: blur(1px);
+}
+
+/* Disc: brighter tint + spin while playing */
+.jellypod__disc {
+  background:
+    radial-gradient(circle at 40% 35%,
+      rgba(255, 255, 255, .95) 0 18px,
+      rgba(255, 255, 255, .25) 18px 40px,
+      rgba(255, 255, 255, 0) 40px),
+    conic-gradient(from 20deg,
+      #ffd1e8, #ffcfe1, #e4d0ff, #c8e3ff, #c5ffe8, #ffeabf, #ffd1e8);
+  filter: drop-shadow(0 10px 22px rgba(var(--shadow)));
+  box-shadow:
+    inset 0 2px 8px rgba(255, 255, 255, .8),
+    inset 0 -4px 10px rgba(0, 0, 0, .08);
+}
+
+/* glow & spin when playing */
+.jellypod.is-playing .jellypod__disc {
+  animation: jp-spin 8s linear infinite;
+  box-shadow:
+    0 0 22px rgba(var(--berry)/.55),
+    inset 0 2px 8px rgba(255, 255, 255, .8),
+    inset 0 -4px 10px rgba(0, 0, 0, .08);
+}
+
+@keyframes jp-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Pulsing “aura” under the disc when playing */
+.jellypod__pulse {
+  position: absolute;
+  inset: auto 20px 118px 20px;
+  height: 120px;
+  border-radius: 24px;
+  background: radial-gradient(60% 70% at 50% 35%,
+      rgba(var(--berry)/.38) 0%,
+      rgba(var(--berry)/.12) 45%,
+      rgba(var(--berry)/0) 70%);
+  opacity: .0;
+  pointer-events: none;
+  filter: blur(8px);
+  transition: opacity .25s ease;
+}
+
+.jellypod.is-playing .jellypod__pulse {
+  opacity: .9;
+}
+
+/* Berry skin: a little more translucent and “candy” edge */
+.jellypod--berry .jellypod__card {
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, .24), rgba(255, 255, 255, .16));
+  border: 1px solid rgba(255, 255, 255, .65);
+}
+
+.jellypod--berry {
+  /* soft halo around the whole pod */
+  filter: drop-shadow(0 18px 38px rgba(var(--berry)/.25));
+}
+
+/* ==== JellyPod Candy-Glass Look ==== */
+.jellypod--berry .jellypod__card {
+  background:
+    radial-gradient(120% 160% at 20% 10%,
+      rgba(255, 255, 255, .85) 0%,
+      rgba(255, 200, 250, .75) 30%,
+      rgba(200, 180, 255, .65) 55%,
+      rgba(180, 140, 255, .55) 100%),
+    linear-gradient(160deg,
+      rgba(255, 170, 230, .8),
+      rgba(180, 120, 255, .75));
+  border: 1.5px solid rgba(255, 255, 255, .55);
+  backdrop-filter: blur(14px) saturate(1.8);
+  -webkit-backdrop-filter: blur(14px) saturate(1.8);
+  box-shadow:
+    0 20px 44px rgba(150, 90, 255, .25),
+    inset 0 1px 0 rgba(255, 255, 255, .9),
+    inset 0 -8px 18px rgba(120, 70, 210, .22);
+}
+
+/* make the candy edge thicker + shiny */
+.jellypod--berry .jellypod__card::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  top: 14px;
+  height: 40px;
+  border-radius: 20px;
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, .9) 0%,
+      rgba(255, 255, 255, .4) 50%,
+      rgba(255, 255, 255, 0) 100%);
+  filter: blur(.8px);
+  pointer-events: none;
+}
+
+/* deeper, candy-like disc */
+.jellypod__disc {
+  background:
+    radial-gradient(45% 40% at 55% 45%, rgba(255, 255, 255, .9), rgba(255, 255, 255, 0) 55%),
+    conic-gradient(from 0deg,
+      #ffbee9, #e6c6ff, #c5faff, #b0fff2, #fff2b5, #ffbee9);
+  box-shadow:
+    0 10px 30px rgba(150, 80, 250, .35),
+    inset 0 6px 16px rgba(255, 255, 255, .8),
+    inset 0 -10px 22px rgba(100, 80, 220, .25);
+}
+
+/* stronger berry pulse glow */
+.jellypod.is-playing .jellypod__pulse {
+  opacity: 0.9;
+  background: radial-gradient(60% 80% at 50% 40%,
+      rgba(255, 140, 240, .45) 0%,
+      rgba(200, 120, 255, .28) 45%,
+      rgba(180, 100, 255, 0) 75%);
+  filter: blur(14px);
+}
+
+.taskbar::after {
+  content: "";
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  top: 8px;
+  height: 20px;
+  border-radius: 14px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .65), transparent);
+  filter: blur(6px);
+  opacity: .8;
+  pointer-events: none;
+}
+
+.win-toolbar .tb-right {
+  display: none !important;
+}
+
+/* Keep key bars single-line */
+.win-toolbar,
+.taskbar,
+.taskbar .task-buttons,
+.tb-crumbs {
+  flex-wrap: nowrap !important;
+  white-space: nowrap;
+}
+
+/* Truncate crumbs nicely if space is tight */
+.tb-crumbs {
+  text-overflow: ellipsis;
+}
+
+/* ===== Mobile mode ===== */
+@media (max-width: 768px) {
+
+  /* Hide taskbar entirely on mobile */
+  .taskbar {
+    display: none !important;
+  }
+
+  :root {
+    --taskbar-h: 0px;
+  }
+
+  /* Desktop padding doesn’t need taskbar room on mobile */
+  .desktop {
+    padding: 10px 10px 10px 10px;
+  }
+
+  /* Make windows fluid and fully visible on small screens */
+  .window {
+    position: fixed;
+    left: 50%;
+    top: 8px;
+    transform: translateX(-50%);
+    width: 96vw;
+    max-width: 96vw;
+    min-width: auto;
+    /* relax the desktop min-width:560px */
+    height: calc(100vh - 16px);
+    max-height: calc(100vh - 16px);
+    margin: 0;
+    border-radius: 18px;
+  }
+
+  /* If maximized, fill full height (no taskbar gap) */
+  .window.maximized {
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    border-radius: 0 !important;
+  }
+
+  /* Slightly tighter titlebar in mobile */
+  .titlebar {
+    height: 48px;
+  }
+}
+
+/* Tweak default window footprint so it centers more comfortably */
+.window {
+  width: min(920px, 92vw);
+  height: min(640px, 82vh);
+  top: 10vh;
+  /* a bit lower so it doesn’t crowd the dock */
+}
+
+
+/* --- Fix right-edge clipping in the window browser toolbar --- */
+.win-toolbar {
+  padding-right: 24px;
+  /* give the chips breathing room */
+  overflow: visible !important;
+  /* don't cut off the last chip */
+}
+
+/* let the crumb row flex without pushing past the edge */
+.tb-crumbs {
+  flex: 1 1 auto;
+  min-width: 0;
+  /* allow it to shrink instead of overflow */
+  white-space: nowrap;
+  overflow: hidden;
+  /* if it ever gets too long, hide the extra… */
+  text-overflow: clip;
+  /* …instead of clipping the last chip shape */
+}
+
+/* optional: add a tiny spacer after the last crumb so it never kisses the edge */
+.tb-crumbs>*:last-child {
+  margin-right: 6px;
+}
+
+/* MOBILE ONLY: drop the first breadcrumb ("This PC") */
+@media (max-width: 768px) {
+
+  /* allow the crumb row to shrink without clipping on mobile */
+  .tb-crumbs {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  /* hide the first crumb */
+  .tb-crumbs> :nth-child(1) {
+    display: none !important;
+  }
+
+  /* if your separator is its own element right after the first crumb, hide it too */
+  .tb-crumbs> :nth-child(2).sep,
+  .tb-crumbs> :nth-child(2).separator,
+  .tb-crumbs> :nth-child(2)[role="separator"],
+  .tb-crumbs> :nth-child(2)[aria-hidden="true"] {
+    display: none !important;
+  }
+
+  /* if the chevron is drawn via ::before on each chip,
+     remove it on the new first visible chip (which is now nth-child(2)) */
+  .tb-crumbs> :nth-child(2)::before {
+    content: none !important;
+  }
+
+  /* remove any leftover left margin on the new first visible chip */
+  .tb-crumbs> :nth-child(2) {
+    margin-left: 0 !important;
+  }
+
+  /* give the toolbar a hair more breathing room on the right edge */
+  .win-toolbar {
+    padding-right: 14px;
+  }
+}
+
+/* Effect layers live above windows but under dialogs/tooltips */
+.fx-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9998;
+}
+
+.fx-particle {
+  position: absolute;
+  will-change: transform, opacity;
+}
+
+/* Toast */
+.fx-toast {
+  position: fixed;
+  left: 50%;
+  top: 14px;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, .75);
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 10px;
+  z-index: 9999;
+  font: 13px/1.3 system-ui, sans-serif;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .3);
+}
+
+/* Rainbow corners */
+.fx-rainbow::before,
+.fx-rainbow::after {
+  content: "";
+  position: fixed;
+  width: 34vmin;
+  height: 34vmin;
+  z-index: 9997;
+  pointer-events: none;
+  background: conic-gradient(from 180deg, #ff6ec7, #7ee8fa, #eec0c6, #ffd166, #c3f584, #b388ff, #ff6ec7);
+  filter: blur(8px) saturate(1.1);
+  opacity: .55;
+  mix-blend-mode: screen;
+}
+
+.fx-rainbow::before {
+  left: -8vmin;
+  top: -8vmin;
+  border-bottom-right-radius: 50%;
+}
+
+.fx-rainbow::after {
+  right: -8vmin;
+  bottom: -8vmin;
+  border-top-left-radius: 50%;
+}
+
+/* Ripples (ping) */
+.fx-ripple {
+  position: fixed;
+  border: 2px solid currentColor;
+  border-radius: 999px;
+  opacity: 0;
+  z-index: 9998;
+}
+
+/* Bubbles */
+.fx-bubble {
+  position: fixed;
+  bottom: -40px;
+  font-size: 18px;
+  opacity: .85;
+}
+
+/* Icon jiggle */
+@keyframes jiggle {
+
+  0%,
+  100% {
+    transform: translate(0, 0)
+  }
+
+  25% {
+    transform: translate(2px, -1px)
+  }
+
+  50% {
+    transform: translate(-2px, 1px)
+  }
+
+  75% {
+    transform: translate(1px, 2px)
+  }
+}
+
+.jiggle .icon img,
+.jiggle .egg-icon img {
+  animation: jiggle .18s linear infinite;
+}
+
+/* Theme accents (optional) */
+:root.theme-pink {
+  --accent: #ff66aa;
+}
+
+:root.theme-purple {
+  --accent: #b26bff;
+}
+
+:root.theme-aqua {
+  --accent: #2fd1c5;
+}
+
+/* If you use --accent anywhere, these will show up. Otherwise safe to keep. */
+
+/* === Mango Pen Effects (sparkles + corner bursts) === */
+/* sparkle trail particle */
+.mango-sparkle {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 50%, #fff, #fff0 70%);
+  filter: drop-shadow(0 0 4px #fff);
+  opacity: 0.9;
+  transform: translate(-50%, -50%) rotate(0deg);
+  animation: mango-pop-fade 700ms ease-out forwards;
+  will-change: transform, opacity;
+  border-radius: 50%;
+}
+
+.mango-sparkle.star {
+  /* star clip like your pen */
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  background: radial-gradient(circle at 50% 50%, #fff, #fff0 60%);
+}
+
+@keyframes mango-pop-fade {
+  0% {
+    transform: translate(var(--x, -50%), var(--y, -50%)) scale(0.6) rotate(0deg);
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(calc(var(--x, -50%) + var(--dx, 0px)), calc(var(--y, -50%) + var(--dy, 0px))) scale(0.9) rotate(180deg);
+    opacity: 0;
+  }
+}
+
+/* corner burst emoji element */
+.mango-burst {
+  position: fixed;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  will-change: transform, opacity;
+  font-size: 18px;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.22);
+  animation:
+    mango-burst-move var(--dur, 1500ms) linear forwards,
+    mango-burst-fade var(--dur, 1500ms) cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes mango-burst-move {
+  from {
+    transform: translate3d(var(--x), var(--y), 0) scale(1) rotate(0deg);
+  }
+
+  to {
+    transform: translate3d(calc(var(--x) + var(--dx)), calc(var(--y) + var(--dy)), 0) scale(1.08) rotate(120deg);
+  }
+}
+
+@keyframes mango-burst-fade {
+  0% {
+    opacity: 1;
+  }
+
+  40% {
+    opacity: 0.85;
+  }
+
+  70% {
+    opacity: 0.55;
+  }
+
+  90% {
+    opacity: 0.28;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Hero grid */
+.hero {
+  gap: 1.2rem;
+  grid-template-columns: 1.1fr .9fr;
+}
+
+.hero-left {
+  padding: 1rem
+}
+
+.headline {
+  font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+  line-height: 1.1;
+  margin: 0 0 .4rem
+}
+
+.lede {
+  color: var(--ink-soft);
+  margin: 0 0 .9rem
+}
+
+.cta-row {
+  display: flex;
+  gap: .6rem;
+  margin: .6rem 0 1rem
+}
+
+.btn-cta {
+  display: inline-block;
+  font-weight: 700;
+  padding: .7rem 1rem;
+  border-radius: 14px;
+  background: linear-gradient(#fff, #fff0), #ffffffc2;
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .12), inset 0 .12rem .12rem rgba(255, 255, 255, .85);
+}
+
+.btn-cta.primary {
+  background: linear-gradient(#fff, #fff0), var(--mint);
+  box-shadow: 0 .6rem 1.2rem rgba(0, 0, 0, .14), inset 0 .12rem .12rem rgba(255, 255, 255, .9);
+}
+
+.btn-cta.slim {
+  padding: .6rem .9rem
+}
+
+/* Chips */
+.chip-row {
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap
+}
+
+.chip {
+  padding: .55rem .9rem;
+  border: 0;
+  font-weight: 700;
+  background: linear-gradient(#fff, #fff0), #fff9ff;
+  box-shadow:
+    0 .35rem .9rem rgba(0, 0, 0, .12),
+    inset 0 .12rem .12rem rgba(255, 255, 255, .85),
+    inset 0 -.12rem .12rem rgba(0, 0, 0, .06);
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+
+.chip[aria-selected="true"] {
+  background: linear-gradient(#fef, #fff0), var(--lilac);
+  box-shadow:
+    0 .5rem 1.1rem rgba(var(--shadow), .18),
+    inset 0 .14rem .14rem rgba(255, 255, 255, .9),
+    inset 0 -.14rem .14rem rgba(94, 64, 128, .18);
+}
+
+/* Mascot frame */
+.hero-art {
+  margin: 0;
+  padding: 1rem;
+  border-radius: 18px;
+  background: linear-gradient(#fff, #fff0), #ffffffc5;
+  border: 1px solid var(--stroke);
+  box-shadow:
+    0 1rem 2rem rgba(var(--shadow), .15),
+    inset 0 .2rem .4rem rgba(255, 255, 255, .9);
+}
+
+.mascot {
+  width: 100%;
+  height: auto;
+  display: block
+}
+
+/* Feature tiles (overlap area below hero) */
+.feature-tiles {
+  grid-column: 1 / -1;
+  min-height: 9.5rem;
+  margin-top: .4rem
+}
+
+.feature-tile {
+  padding: 1rem .9rem;
+  border-radius: 18px;
+  background: linear-gradient(#fffffffa, #ffffffc7);
+  box-shadow:
+    0 1.2rem 2.2rem rgba(var(--shadow), .16),
+    0 .2rem .4rem rgba(58, 26, 81, .15) inset,
+    0 -.25rem .5rem rgba(255, 255, 255, .9) inset;
+  transform: translateY(6px) scale(.98);
+}
+
+.feature-tile.is-visible {
+  transform: translateY(0) scale(1)
+}
+
+/* Featured case */
+.case-card {
+  margin: 1.2rem .2rem 1rem;
+  padding: 1rem;
+  grid-template-columns: 320px 1fr;
+  gap: 1rem;
+  border-radius: 18px;
+  border: 1px solid var(--stroke);
+  background: linear-gradient(#ffffff, #fff2ff);
+  box-shadow: 0 1rem 2rem rgba(var(--shadow), .12), 0 .2rem .4rem rgba(255, 255, 255, .9) inset;
+}
+
+.case-thumb {
+  border-radius: 14px;
+  background: linear-gradient(180deg, #f7ecff, #e6f7ff)
+}
+
+.case-title {
+  margin: .2rem 0
+}
+
+.tag-row {
+  margin: .4rem 0 .7rem
+}
+
+.tag {
+  font-weight: 700;
+  font-size: .85rem;
+  padding: .35rem .6rem;
+  background: linear-gradient(#fff, #fff0), #ffffffcc;
+}
+
+/* Panels all share the same absolute slot */
+.feature-tiles {
+  min-height: 200px;
+  margin-top: 1rem;
+}
+
+.feature-tile {
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  border: 2px solid var(--accent, #d8a8ff);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 2;
+}
+
+/* When a panel is “visible” we fade/scale in */
+
+/* Case card when used as a tile panel */
+.feature-tiles .case-card {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+@media (max-width: 900px) {
+  .feature-tiles .case-card {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* The tiles should live where the mascot is (right column) */
+.hero {
+  position: relative;
+}
+
+.hero .feature-tiles {
+  grid-column: 2;
+  z-index: 2;
+}
+
+/* When any panel is visible, fade the mascot out so they never overlap */
+.hero.has-panel .hero-art {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s ease;
+}
+
+.hero .hero-art {
+  transition: opacity .2s ease;
+}
+
+/* Make sure panels are clickable and above */
+.feature-tile {
+  z-index: 3;
+}
+
+/* If you still see tiles below the hero, remove the old "span full width" rule: */
+.feature-tiles {
+  grid-column: 2 / 3;
+}
+
+/* Right column: two columns inside the rounded card */
+.hero-media {
+  grid-template-columns: 1fr 1fr;
+  /* mascot | panel */
+}
+
+/* The slot next to the mascot where tiles/case appear */
+.panel-slot {
+  min-height: 14rem;
+}
+
+/* Stack all panels in the same slot */
+
+.feature-tile {
+  background: var(--panel-bg, #fff);
+}
+
+/* keep hidden elements measurable for the fade */
+
+/* Case card look (adjust to taste) */
+
+/* Responsive: if you want them to stack on small screens */
+@media (max-width: 900px) {
+  .hero-media {
+    grid-template-columns: 1fr;
+  }
+
+  .panel-slot {
+    min-height: 12rem;
+  }
+
+  /* panel will go below the mascot on small screens */
+}
+
+/* FORCE: mascot | panel side-by-side (panel on the RIGHT) */
+.hero-media {
+  display: grid;
+  grid-template-columns: minmax(300px, 1fr) minmax(340px, 1fr);
+  /* mascot | panel */
+  gap: 1rem;
+  align-items: start;
+}
+
+.hero-art {
+  grid-column: 1;
+}
+
+.panel-slot {
+  grid-column: 2;
+  min-height: 240px;
+}
+
+/* Stack all panels inside the panel-slot (same space) */
+
+.feature-tile {
+  padding: 1rem;
+  background: #fff;
+  border: 1px solid var(--stroke, #e6d8fb);
+  box-shadow: 0 .6rem 1.2rem rgba(0, 0, 0, .08);
+}
+
+/* keep hidden panels measurable so they can fade in */
+
+/* Case card look */
+.case-card {
+  display: grid;
+  gap: .75rem;
+}
+
+/* KILL any previous rule that faded/moved the mascot when a panel shows */
+.hero.has-panel .hero-art {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+/* If some earlier rule spread tiles full-width, neutralize it */
+.feature-tiles {
+  grid-column: auto;
+}
+
+/* ===== Pretty-up the hero content (LEFT column) ===== */
+:root {
+  --ink: #3a2d4f;
+  --ink-soft: #5b4f6f;
+  --jelly: #f7eaff;
+  /* pastel panel bg */
+  --stroke: #e8d7fb;
+  /* lavender stroke */
+  --accent: #caa3ff;
+  /* pastel purple */
+  --accent-2: #9dd9f3;
+  /* pastel aqua */
+  --glow: rgba(202, 163, 255, .35);
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  /* left content | right mascot */
+  gap: 2rem;
+  align-items: start;
+}
+
+.hero-left .headline {
+  color: var(--ink);
+  font-weight: 800;
+  letter-spacing: .2px;
+  margin: 0 0 .3rem 0;
+  text-shadow: 0 1px 0 #fff;
+}
+
+.hero-left .lede {
+  color: var(--ink-soft);
+  margin: 0 0 1rem 0;
+}
+
+/* CTA buttons — jelly, soft shadow */
+.btn-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .65rem 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--stroke);
+  background: linear-gradient(180deg, #fff, #fff8ff);
+  box-shadow:
+    0 10px 20px rgba(0, 0, 0, .08),
+    inset 0 3px 0 rgba(255, 255, 255, .9);
+  color: var(--ink);
+  text-decoration: none;
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+
+.btn-cta.primary {
+  background: linear-gradient(180deg, #ffe9ff, #f7eaff);
+  border-color: #e7cffd;
+  box-shadow:
+    0 10px 20px rgba(202, 163, 255, .20),
+    0 2px 0 0 var(--glow),
+    inset 0 3px 0 rgba(255, 255, 255, .95);
+}
+
+.btn-cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 24px rgba(0, 0, 0, .10), inset 0 3px 0 rgba(255, 255, 255, .95);
+}
+
+.btn-cta.slim {
+  padding: .55rem .85rem;
+}
+
+/* Chips — pill buttons with subtle sparkle hover */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin: .9rem 0 .75rem 0;
+}
+
+.chip {
+  padding: .45rem .7rem;
+  border-radius: 999px;
+  border: 1px solid var(--stroke);
+  background: #fff;
+  color: var(--ink);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, .06), inset 0 2px 0 rgba(255, 255, 255, .95);
+  cursor: pointer;
+  transition: background .12s ease, transform .1s ease, box-shadow .12s ease;
+}
+
+.chip:hover {
+  background: #fff9ff;
+  transform: translateY(-1px);
+}
+
+.chip[aria-selected="true"] {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ===== Left-column PANEL SLOT (this fills the gap under chips) ===== */
+.panel-slot {
+  margin-top: .5rem;
+  min-height: 220px;
+  /* ensures space even before first hover */
+}
+
+/* Stack all tiles in same slot with soft clay look */
+.feature-tiles {
+  position: relative;
+}
+
+.feature-tile {
+  position: absolute;
+  inset: 0;
+  padding: 1rem 1.1rem 1.15rem;
+  background: var(--jelly);
+  border: 1px solid var(--stroke);
+  border-radius: 16px;
+  box-shadow:
+    0 14px 26px rgba(0, 0, 0, .10),
+    0 1px 0 #fff inset,
+    0 0 0 1px rgba(255, 255, 255, .6) inset;
+  color: var(--ink);
+  opacity: 0;
+  transform: translateY(6px);
+  pointer-events: none;
+  transition: opacity .18s ease, transform .18s ease;
+}
+
+.feature-tile.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* keep hidden panels measurable so they can fade in smoothly */
+.feature-tile[hidden] {
+  display: block;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Tile headings and body copy */
+.feature-tile h4,
+.feature-tile .case-title {
+  margin: 0 0 .35rem 0;
+  font-weight: 800;
+  letter-spacing: .2px;
+  color: var(--ink);
+}
+
+.feature-tile p,
+.feature-tile .case-copy {
+  margin: 0 0 .75rem 0;
+  color: var(--ink-soft);
+}
+
+/* Tags row */
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  margin-bottom: .7rem;
+}
+
+.tag {
+  font-size: .82rem;
+  padding: .25rem .5rem;
+  border-radius: 999px;
+  background: #fff;
+  border: 1px solid var(--stroke);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .95);
+}
+
+/* CTA row inside card */
+.feature-tile .cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+
+/* ===== SPECIAL: extend the white section 12px below the bottom buttons ===== */
+.case-card {
+  background: #fff;
+  /* white body inside jelly frame */
+  border-radius: 14px;
+  padding: .9rem 1rem 1rem;
+  /* keep some padding above/beside */
+  position: relative;
+  overflow: visible;
+  /* allow the extension to show */
+}
+
+/* The “extension” below the buttons (10–15px). Using 12px for balance. */
+.case-card::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -12px;
+  /* pushes past buttons */
+  height: 12px;
+  /* extend amount (adjust 10–15px) */
+  background: #fff;
+  border-radius: 0 0 14px 14px;
+  box-shadow:
+    0 12px 18px rgba(0, 0, 0, .08);
+  /* continuation of the shadow */
+}
+
+/* keep outer lavender frame visible behind the white inner body */
+.feature-tile.case-card {
+  background: linear-gradient(#ffffff, #fff);
+  /* white */
+  border-color: var(--stroke);
+  box-shadow:
+    0 16px 28px rgba(0, 0, 0, .10),
+    0 0 0 1px rgba(255, 255, 255, .7) inset;
+}
+
+/* Make the white inner look sit inside the jelly frame */
+.feature-tile.case-card .case-body {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== Right column mascot polish (kept minimal) ===== */
+.hero-right .hero-art {
+  display: grid;
+  place-items: center;
+  background: linear-gradient(180deg, #fff, #fff7ff);
+  border: 1px solid var(--stroke);
+  border-radius: 20px;
+  padding: 1rem;
+  box-shadow: 0 16px 30px rgba(0, 0, 0, .10), inset 0 1px 0 #fff;
+}
+
+.hero-right .mascot {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Small screens */
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .panel-slot {
+    min-height: 200px;
+  }
+}
+
+/* ===== Title plaque anchor for headline/tagline ===== */
+.hero-intro {
+  position: relative;
+  display: inline-block;
+  /* hugs the text width */
+  padding: .6rem 1rem .7rem;
+  border: 1px solid var(--stroke, #e8d7fb);
+  border-radius: 14px;
+  background:
+    radial-gradient(120% 100% at 20% 0%, rgba(255, 255, 255, .95), #fff);
+  box-shadow:
+    0 14px 26px rgba(0, 0, 0, .08),
+    inset 0 1px 0 #fff;
+}
+
+.hero-intro .headline {
+  margin: 0 0 .25rem 0;
+}
+
+.hero-intro .lede {
+  margin: 0;
+}
+
+/* Ribbon under the plaque (gives it a base so it doesn't float) */
+.hero-intro::after {
+  content: "";
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: -8px;
+  height: 8px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #fff, #fff6ff);
+  box-shadow: 0 10px 18px rgba(0, 0, 0, .08);
+}
+
+/* Dotted connector from plaque to the panel slot below */
+.panel-slot {
+  --connector-x: 24px;
+  /* tweak left offset if needed */
+  position: relative;
+  margin-top: .9rem;
+}
+
+.panel-slot::before {
+  content: "";
+  position: absolute;
+  top: -14px;
+  left: var(--connector-x);
+  width: calc(100% - var(--connector-x)*2);
+  height: 12px;
+  border-top: 1px dashed var(--stroke, #e8d7fb);
+  opacity: .9;
+}
+
+/* Optional: small pastel markers that sit at ends of the connector */
+.panel-slot::after {
+  content: "";
+  position: absolute;
+  top: -17px;
+  left: var(--connector-x);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow:
+    0 0 0 1px var(--stroke, #e8d7fb),
+    0 2px 4px rgba(0, 0, 0, .06),
+    calc(100% - 6px - var(--connector-x)*2) 0 0 0 #fff,
+    calc(100% - 6px - var(--connector-x)*2) 0 0 1px var(--stroke, #e8d7fb),
+    calc(100% - 6px - var(--connector-x)*2) 2px 4px rgba(0, 0, 0, .06);
+}
+
+/* Slight lift for the CTAs so they nest under the plaque nicely */
+.hero-left .cta-row {
+  margin-top: .75rem;
+}
+
+/* Keep your panel styling; just ensure min-height so the anchor has a target */
+#panel-slot-left {
+  min-height: 220px;
+}
+
+/* --- Clean up anchor artifacts --- */
+
+/* Remove the dotted connector and its end-cap dot */
+.panel-slot::before,
+.panel-slot::after {
+  content: none !important;
+}
+
+/* Make the hero title-plaque look anchored without a visible bar */
+.hero-intro::after {
+  content: none !important;
+  /* comment this out if you liked the ribbon */
+}
+
+/* Smooth the case card bottom extension (no visible seam/line) */
+.feature-tile.case-card::after {
+  /* keep the 12px extension but remove the harsh edge/shadow line */
+  box-shadow: none !important;
+  background: #fff !important;
+}
+
+/* If you still see a faint seam under the card on some zoom levels,
+   give the card a touch more bottom padding and drop the pseudo-element. */
+.feature-tile.case-card {
+  padding-bottom: 1.35rem !important;
+}
+
+.feature-tile.case-card::after {
+  content: none !important;
+}
+
+/* Optional: soft anchor glow under the headline block */
+.hero-intro {
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, .08));
+}
+
+.case-img {
+  height: 200px;
+
+}
+
+/* ==================== FINAL TINY PATCH (append to end) ==================== */
+
+/* 1) TASKBAR PILL — obvious pressed-in state */
+footer.taskbar .task-buttons .task-btn.is-active {
+  transform: translateY(2px) !important;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .58), rgba(236, 246, 255, .65)) !important;
+  box-shadow:
+    inset 0 18px 30px rgba(0, 0, 0, .38),
+    inset 0 -2px 0 rgba(255, 255, 255, .32),
+    0 1px 0 rgba(255, 255, 255, .45) !important;
+  border-color: rgba(0, 0, 0, .14) !important;
+}
+
+/* 2) Mascot never shrinks/fades when a panel is visible */
+.hero.has-panel .hero-art {
+  opacity: 1 !important;
+  transform: none !important;
+  pointer-events: auto !important;
+}
+
+/* 3) Feature tiles — keep them comfortably sized inside the panel slot */
+
+.feature-tile {
+  max-width: 540px;
+  margin-left: 0;
+  margin-right: auto;
+  /* stay left-aligned under your chips */
+  padding: .9rem 1rem 1.05rem !important;
+  /* a touch tighter */
+  max-height: fit-content;
+
+}
+
+.feature-tiles {
+  max-width: 540px;
+}
+
+.panel-slot {
+  max-width: 540px;
+  margin-left: 0;
+  margin-right: auto;
+  /* stay left-aligned under your chips */
+  padding: .9rem 1rem 1.05rem !important;
+  /* a touch tighter */
+}
+
+/* 4) Mobile — full-width window, no right-edge clipping */
+@media (max-width: 768px) {
+  .window {
+    position: fixed !important;
+    left: 0 !important;
+    right: 0 !important;
+    top: 0 !important;
+    transform: none !important;
+    margin: 0 !important;
+    width: 100vw !important;
+    height: calc(100vh - var(--taskbar-h, 64px)) !important;
+    border-radius: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .content {
+    overflow: auto !important;
+    padding-right: 14px !important;
+    /* prevents right-side cut */
+  }
+}
+
+/* === Case card: 2-column on desktop (text left, image right ~200px) === */
+@media (min-width: 900px) {
+  .feature-tile.case-card {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) 220px;
+    /* left text | right image */
+    gap: 1rem;
+    align-items: start;
+  }
+
+  /* Right column image (support several possible classnames) */
+  .feature-tile.case-card .case-img,
+  .feature-tile.case-card .case-media img,
+  .feature-tile.case-card>img {
+    width: 100%;
+    height: 200px;
+    /* target height */
+    object-fit: cover;
+    /* fill neatly without distortion */
+    border-radius: 12px;
+    display: block;
+  }
+
+  /* Left column for copy/buttons if you have a wrapper */
+  .feature-tile.case-card .case-body {
+    grid-column: 1;
+  }
+}
+
+/* Give the card a touch more room so the image fits comfortably */
+.panel-slot,
+.panel-slot .feature-tiles,
+.panel-slot .feature-tile {
+  max-width: 900px;
+  /* adjust to taste; keeps within the left column */
+}
+
+/* Boot overlay appears smoothly */
+.boot {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  background: #fceeff;
+  /* pastel fallback */
+  background-position: center;
+  background-size: cover;
+  opacity: 0;
+  /* start invisible */
+  visibility: hidden;
+  transition: opacity .5s ease, visibility 0s linear .5s;
+}
+
+/* add via JS on mount so it actually transitions in */
+.boot.mount {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity .5s ease, visibility 0s linear 0s;
+}
+
+/* video fades in only after 'playing' */
+.boot video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity .35s ease;
+}
+
+.boot.video-live video {
+  opacity: 1;
+}
+
+/* fade boot out when revealing the app */
+.boot.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .5s ease, visibility 0s linear .5s;
+}
+
+/* Desktop hidden until reveal */
+#app[hidden] {
+  display: block;
+  opacity: 0;
+}
+
+#app.is-visible {
+  opacity: 1;
+  transition: opacity .5s ease;
+}
+
+/* When we've already booted in this tab, do NOT run intro fades/animations */
+html.has-booted body,
+html.has-booted .desktop,
+html.has-booted .dock,
+html.has-booted .taskbar,
+html.has-booted .window,
+html.has-booted .hero,
+html.has-booted .icon-grid {
+  opacity: 1 !important;
+  animation: none !important;
+  transition: none !important;
+}
