@@ -2835,4 +2835,18 @@ footer.taskbar .task-buttons .task-btn.is-active {
 #app.is-visible {
   opacity: 1;
   transition: opacity .5s ease;
+
+}
+
+/* When we've already booted in this tab, do NOT run intro fades/animations */
+html.has-booted body,
+html.has-booted .desktop,
+html.has-booted .dock,
+html.has-booted .taskbar,
+html.has-booted .window,
+html.has-booted .hero,
+html.has-booted .icon-grid {
+  opacity: 1 !important;
+  animation: none !important;
+  transition: none !important;
 }
