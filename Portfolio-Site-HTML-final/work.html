@@ -656,5 +656,21 @@ function getSummaryFrom(card){
       }
     })();
   </script>
+  <script>
+function getSummaryFromTile(tile) {
+  const el = tile.querySelector('.summary');
+  if (!el) return '';
+  if (el.tagName === 'TEMPLATE') return el.innerHTML.trim();      // local preview
+  return (el.textContent || '').trim();                            // script/div fallback
+}
+
+// If a CMS spat the summary into a visible element, hide it defensively:
+document.querySelectorAll('.tile .summary').forEach(el => {
+  if (el.tagName !== 'SCRIPT' && el.tagName !== 'TEMPLATE') {
+    el.hidden = true; el.style.display = 'none';
+  }
+});
+</script>
 </body>
 </html>
+
