@@ -2850,3 +2850,201 @@ html.has-booted .icon-grid {
   animation: none !important;
   transition: none !important;
 }
+
+
+
+/* Layout: grid of tiles + sticky preview pane */
+.work-wrap {
+  display: grid;
+  grid-template-columns: 1fr min(36rem, 35vw);
+  gap: 1rem;
+  align-items: start;
+}
+
+@media (max-width: 980px) {
+  .work-wrap {
+    grid-template-columns: 1fr;
+  }
+
+  .preview-pane {
+    position: static;
+    order: 3;
+  }
+}
+
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.85rem;
+}
+
+.tile {
+  display: flex;
+  gap: .75rem;
+  align-items: center;
+  background: var(--surface, rgba(255, 255, 255, .7));
+  border: 1px solid rgba(0, 0, 0, .06);
+  border-radius: 16px;
+  padding: .75rem;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-drag: none;
+  transition: transform .08s ease, box-shadow .08s ease;
+  outline: none;
+}
+
+.tile:hover,
+.tile:focus {
+  box-shadow: 0 4px 18px rgba(0, 0, 0, .08);
+  outline: 2px solid var(--accent, #c973ff);
+  outline-offset: 2px;
+}
+
+.tile img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+
+.tile h4 {
+  margin: 0 0 2px 0;
+  font-size: 1rem;
+}
+
+.tile p {
+  margin: 0;
+  opacity: .8;
+  font-size: .9rem;
+}
+
+.preview-pane {
+  position: sticky;
+  top: 1rem;
+  align-self: start;
+  background: var(--surface, rgba(255, 255, 255, .7));
+  border: 1px solid rgba(0, 0, 0, .06);
+  border-radius: 16px;
+  padding: 1rem;
+  min-height: 320px;
+  max-height: calc(100vh - 6rem);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.preview-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, .08);
+  padding-bottom: .5rem;
+}
+
+.preview-actions {
+  display: flex;
+  gap: .5rem;
+}
+
+.preview-actions .btn {
+  border: 1px solid rgba(0, 0, 0, .15);
+  border-radius: 999px;
+  padding: .45rem .8rem;
+  background: linear-gradient(#fff, rgba(255, 255, 255, .8));
+  font-size: .9rem;
+}
+
+.preview-content {
+  margin-top: .75rem;
+  overflow: auto;
+  padding-right: .25rem;
+}
+
+.preview-content h2,
+.preview-content h3,
+.preview-content h4 {
+  margin: .6rem 0 .25rem;
+}
+
+.preview-content ul {
+  margin: .25rem 0 .5rem 1rem;
+}
+
+.preview-empty {
+  opacity: .7;
+}
+
+
+
+/* --- Work page layout refinements --- */
+
+/* 1) Keep the whole grid+preview centered and not too wide */
+.work-wrap {
+  /* max width of the two columns combined */
+  max-width: min(1300px, 92vw);
+  margin-inline: auto;
+  gap: 6.25rem;
+  /* a touch more breathing room */
+}
+
+/* 2) Column sizing that keeps tiles compact and pulls the preview inward */
+@media (min-width: 1100px) {
+  .work-wrap {
+    /* Left column grows from 560px up to available space;
+       Right column is a comfy 380–560px, ~28–32vw. */
+    grid-template-columns:
+      minmax(560px, 1fr) clamp(380px, 33vw, 560px);
+  }
+}
+
+/* 3) Moderate-wide windows: still keep preview close, encourage tile stacking */
+@media (min-width: 900px) and (max-width: 1099px) {
+  .work-wrap {
+    grid-template-columns:
+      minmax(520px, 1fr) clamp(360px, 34vw, 500px);
+  }
+}
+
+/* 4) Tile grid: encourage stacking into neat rows instead of stretching */
+.tiles {
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+/* On really wide windows, keep each tile at a friendly reading width so they wrap */
+@media (min-width: 1300px) {
+  .tiles {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
+}
+
+/* 5) Preview panel: a little denser on big screens so it doesn’t feel “far right” */
+.preview-pane {
+  border-radius: 18px;
+  padding: 1rem 1.1rem;
+  max-height: calc(100vh - 8rem);
+}
+
+.preview-header {
+  padding-bottom: .6rem;
+}
+
+.preview-content {
+  line-height: 1.45;
+}
+
+/* 6) Content padding inside the window so neither side “kisses” the edges */
+.window .content {
+  padding-inline: clamp(8px, 2vw, 20px);
+}
+
+/* 7) Slightly larger hit area so cards feel uniform as they stack */
+.tile {
+  padding: .85rem;
+}
+
+.tile img {
+  width: 85px;
+  height: 85px;
+}
