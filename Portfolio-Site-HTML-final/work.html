@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Ms. Mango — Work</title>
   <link rel="stylesheet" href="css/site.cleaned.css"/>
+
+  <!-- Minimal page-scoped styles for the preview layout -->
+  <style>
+    
+  </style>
 </head>
 <body>
   <main class="desktop">
@@ -24,68 +29,468 @@
           <button class="winbtn danger" data-action="close">✕</button>
         </div>
       </header>
+
       <!-- Toolbar (Explorer-style) -->
-<div class="win-toolbar">
-  <div class="tb-left">
-    <button class="tb-btn" aria-label="Back">⟨</button>
-    <button class="tb-btn" aria-label="Forward">⟩</button>
-    <button class="tb-btn" aria-label="Up">⤴</button>
-    <button class="tb-btn" aria-label="Refresh">↻</button>
-  </div>
+      <div class="win-toolbar">
+        <div class="tb-left">
+          <button class="tb-btn" aria-label="Back">⟨</button>
+          <button class="tb-btn" aria-label="Forward">⟩</button>
+          <button class="tb-btn" aria-label="Up">⤴</button>
+          <button class="tb-btn" aria-label="Refresh">↻</button>
+        </div>
 
-  <!-- Breadcrumb / address bar -->
-  <nav class="tb-crumbs" aria-label="Breadcrumb">
-    <button class="crumb">This PC</button>
-    <span class="crumb-sep">›</span>
-    <button class="crumb">Portfolio</button>
-    <span class="crumb-sep">›</span>
-    <button class="crumb is-current">Projects Folder</button>
-  </nav>
+        <nav class="tb-crumbs" aria-label="Breadcrumb">
+          <button class="crumb">This PC</button>
+          <span class="crumb-sep">›</span>
+          <button class="crumb">Portfolio</button>
+          <span class="crumb-sep">›</span>
+          <button class="crumb is-current">Projects Folder</button>
+        </nav>
 
-  <div class="tb-right">
-    <button class="tb-btn" aria-label="Tiles">▦</button>
-    <button class="tb-btn" aria-label="Details">≡</button>
-  </div>
-</div>
+        <div class="tb-right">
+          <button class="tb-btn" aria-label="Tiles">▦</button>
+          <button class="tb-btn" aria-label="Details">≡</button>
+        </div>
+      </div>
 
       <div class="toolbar">
         <span class="crumb">File</span>
         <span class="crumb">Edit</span>
         <span class="crumb">Help</span>
       </div>
+
       <div class="content">
         <h2 style="margin-top:4px">My Web Projects</h2>
-        <div class="tiles">
-          <a class="tile" href="https://github.com/MiracleRaverMango/bruise-cruise-site" target="_blank" rel="noreferrer">
-            <img src="assets/brucru-logo2.png" alt=""><div>
-              <h4>Bruise Cruise</h4><p>Interactive concept site</p></div>
-          </a>
-          <a class="tile" href="https://github.com/MiracleRaverMango/beatchat-widget" target="_blank" rel="noreferrer">
-            <img src="assets/kawaii_folder_heart.png" alt=""><div>
-              <h4>BeatChat Widget</h4><p>Music chat mini-app</p></div>
-          </a>
-          <a class="tile" href="https://www.miracleravermango.com/" target="_blank" rel="noreferrer">
-            <img src="assets/MangoRecordLogo03.png" alt=""><div>
-              <h4>DJ Ms. Mango</h4><p>Press-ready artist site</p></div>
-          </a>
-          <a class="tile" href="https://miracleravermango.github.io/needle-leaf-grand-opening/" target="_blank" rel="noreferrer">
-            <img src="assets/fountain-pen-icon.webp" alt=""><div>
-              <h4>Needle & Leaf - Grand Opening</h4><p>Elegant Email Template</p></div>
-          </a>
-          <a class="tile" href="https://miracleravermango.github.io/fireworks-memory-game/" target="_blank" rel="noreferrer">
-            <img src="assets/fireworks.png" alt=""><div>
-              <h4>Fireworks Memory </h4><p>Ten-round Mini Game</p></div>
-          </a>
-        </div>
-      </div>
-      <div class="win-statusbar">
-  <span class="status-left">5 items</span>
-  <span class="status-right">Ready</span>
-</div>
-</div>
-      <div class="resizer" data-resize="se" aria-hidden="true"></div>
-    <button class="resize-grip" data-resize="se" aria-label="Resize"></button>    </section>
 
+        <!-- WORK AREA: grid + preview -->
+        <div class="work-wrap">
+          <!-- Grid of focusable tiles. Single-click selects; double-click opens -->
+          <div class="tiles" role="list" id="projectsGrid">
+            <!-- Each project is an article (not an <a>) so single-click won't navigate -->
+            <article class="tile" role="listitem" tabindex="0"
+  data-id="bruise-cruise"
+  data-url="https://github.com/MiracleRaverMango/bruise-cruise-site"
+  data-title="Bruise Cruise — Interactive Band Site">
+  <img src="assets/brucru-logo2.png" alt="">
+  <div>
+    <h4>Bruise Cruise</h4>
+    <p>Interactive concept site</p>
+  </div>
+
+  <!-- new: case-study content lives here -->
+  <template class="summary">
+# Goals
+Create a dreamy glam band site that feels like water ripples—soft, musical, and navigable.
+
+## My Role
+Design, front-end build, custom audio UI.
+
+## Stack
+HTML, CSS, JS (vanilla).
+
+## Process Highlights
+- Built a cassette-style player then refined to an accessible playlist.
+- Iterated on dark vs light themes; tuned for long listening sessions.
+- Prepared for CMS so non-dev updates are easy.
+
+## Outcomes
+Cleaner structure, better branding cohesion, and a performance budget for audio UIs.
+
+---
+
+## Case Study: Bruise Cruise Website
+**Project Overview**  
+Client: Bruise Cruise (fictional alt-pop band)  
+Timeline: 4 days  
+Deliverables: Multi-page responsive website (Home, Music, About, Gallery, Merch, Tour, Blog, Checkout) with custom CSS effects, interactive audio player, shopping cart, and blog with comments.
+
+**Objectives**
+- Brand alignment with a moody glam aesthetic  
+- Responsive & accessible  
+- Interactivity (player, lightbox, cart)  
+- Maintainable on GitHub Pages
+
+**Process**
+1. Discovery & Wireframing  
+  - Define journeys: discover music, learn about band, shop merch  
+  - Mobile-first sketches  
+2. Visual Design & Prototyping  
+  - Frosted-glass motif + ripple overlay  
+3. Development  
+  - Reset + CSS variables  
+  - Split-nav + hamburger  
+  - Full-viewport hero with ripple animation  
+  - Components: audio player, gallery/lightbox, merch cart (localStorage), blog w/ comments  
+  - Fluid grids + touch menus  
+4. Testing & Deployment  
+  - Cross-device tests, fixed z-index/overflow issues  
+  - Deploy: https://miracleravermango.github.io/bruise-cruise-site/
+
+**Challenges → Solutions**
+- Hamburger overlap on mobile → single `.frosted-top` flex container; toggle `.open`  
+- Image path casing → normalize to `/images`  
+- Checkout/blog not scrolling → remove conflicting `overflow:hidden`  
+- CSS specificity clashes → modularize sections
+
+**Key Results**
+- Sub-1s loads on 3G  
+- Higher engagement from interactive elements  
+- Clear structure for future features
+
+**Next Steps**
+- Stripe/PayPal prototype  
+- Analytics events  
+- Pull posts from CMS/Markdown
+
+**Takeaway**  
+Polished, responsive, interactive site that embodies the brand—turning a brochure into an immersive fan experience.
+</template>
+</article>
+
+            <!-- BEATCHAT WIDGET -->
+<article class="tile" role="listitem" tabindex="0"
+  data-id="beatchat-widget"
+  data-url="https://beatchat.miracleravermango.com"
+  data-title="BeatChat Widget — Music Chat Mini-App">
+  <img src="assets/kawaii_folder_heart.png" alt="">
+  <div>
+    <h4>BeatChat Widget</h4>
+    <p>Music chat mini-app</p>
+  </div>
+
+  <template class="summary">
+# Goals
+Create a real-time, embeddable music-sharing widget that feels like a **digital listening party**—fun, lightweight, and easy to drop into artist sites or streams.
+
+## My Role
+UI/UX design, front-end component structure, deployment pipeline planning.
+
+## Stack
+Node.js, Express, Socket.IO, MongoDB, HTML/CSS/JS.
+
+## Process Highlights
+- Architected room/queue/chat states for instant sync.
+- First user becomes ★ moderator with simple tools.
+- Parsed pasted links into dynamic embeds (Spotify, YouTube, SoundCloud, Bandcamp, Mixcloud).
+- Built responsive layout with theme toggle and a11y labels.
+
+## Outcomes
+A production-ready widget (< 1MB front-end) that keeps rooms synchronized, boosts session time, and demos clean moderation + playback. (PM2 + proxy for zero-downtime demos)
+
+---
+
+## BeatChat — Case Study
+**Project Overview**  
+BeatChat merges live chat, cross-platform embeds, and light moderation so fans can suggest tracks, vote, and listen together—an engagement layer for musicians and streamers.
+
+**The Challenge**
+- Let fans suggest tracks and vote on the next song.  
+- Support many providers (Spotify/YouTube/SoundCloud/Bandcamp/Mixcloud).  
+- Keep all clients synchronized in real time.  
+- Provide mod controls (kick, ban, rename room, force play) without a heavy dashboard.  
+- Stay responsive and themed on mobile/desktop.
+
+**Approach & Development**
+
+1. **Planning & Architecture**  
+   - *Frontend*: Vanilla JS with DOM-first components; CSS Grid/Flexbox for hierarchy.  
+   - *Backend*: Node + Express serving and Socket.IO for bidirectional events.  
+   - *Database*: MongoDB for queues, users, rooms (persistence & recovery).
+
+2. **Feature Implementation**  
+   - **Real-time**: Socket events for suggest/vote/chat/now-playing → shared state for everyone in a room.  
+   - **Moderator role**: First creator is ★; can rename room, kick/ban, and **⚡ Force** to skip queues.  
+   - **Dynamic embeds**: Paste a link → autogenerate playable iframe.  
+   - **Validation**: Block invalid URLs, duplicate names; enforce bans.
+
+3. **Deployment & Optimization**  
+   - **PM2** for uptime and restarts.  
+   - **Reverse proxy** via Nginx/Cloudflare Tunnel.  
+   - **Persistence**: Mongo fallback config for env variability.  
+   - **Security**: Sanitize input; restrict mod commands to authorized clients.
+
+4. **Design & Usability Enhancements**  
+   - Responsive sidebar collapse; mobile-optimized layout.  
+   - Theme toggle (CSS variables).  
+   - Semantic HTML, ARIA labels, logical tab order.  
+   - Clear system messages (e.g., “**DJ Melody** renamed the room…”).
+
+**Key Features**
+- Real-time suggests, voting, and playback queue.  
+- Major platform embeds.  
+- Moderator tools (★, kick/ban/rename/force).  
+- User tools (rename, ignore/unignore, chat).  
+- Theme toggle; responsive UI.  
+- PM2 + proxy + tunnel deployment pipeline.
+
+**Outcome & Evaluation**
+- **Zero downtime** during demos; synchronized state across devices.  
+- **Higher engagement** vs standard chat; users shared more links and stayed longer.  
+- More than a proof: a **working showcase** of full-stack real-time UX with clean design thinking.
+
+**Takeaway**  
+BeatChat proves you can deliver low-friction, real-time music interactions that scale from a simple widget to a full room system.
+  </template>
+</article>
+
+
+            <!-- DJ MS. MANGO -->
+<article class="tile" role="listitem" tabindex="0"
+  data-id="dj-ms-mango"
+  data-url="https://www.miracleravermango.com/"
+  data-title="DJ Ms. Mango — Press-Ready Artist Site">
+  <img src="assets/MangoRecordLogo03.png" alt="">
+  <div>
+    <h4>DJ Ms. Mango</h4>
+    <p>Press-ready artist site</p>
+  </div>
+
+  <template class="summary">
+# Goals
+Centralize mixes, blog, and contact into one cohesive site, keep the **magical raver** identity, and add dynamic features (comments, favorites, modal blog previews) with full aesthetic control.
+
+## My Role
+End-to-end design & build. Full-stack implementation (Node/Express/EJS + SQL), UI/UX, deployment.
+
+## Stack
+Node.js, Express, EJS templates, MySQL (comments), HTML/CSS/JS.
+
+## Process Highlights
+- Theme system with CSS variables (light/dark).
+- Mix cards with waveform, playback, tracklists, and comments.
+- Blog index with jelly-cards + modal “Read More” previews.
+- Favorites via localStorage; reusable fetch-powered comments.
+- Mobile nav, ARIA labels, reduced-motion handling, lazy images.
+
+## Outcomes
+A responsive, production site with blog, comments, interactive mixes, and a brand-true UI at https://www.miracleravermango.com.
+
+---
+
+## Case Study — DJ Portfolio & Blog
+**Project Overview**  
+Custom Node + Express + EJS web app showcasing DJ mixes, a blog, and about/contact—bright, playful, and professional.
+
+**Backend Architecture**
+- **Express** serves EJS views from `/views`.  
+- **MySQL** tables: `comments` (mixes) and `blog_comments` (posts).  
+- **RSS** feed for the blog.  
+- Static assets in `/public` with 404 fallback.
+
+**Frontend (EJS)**
+- **index.ejs**: slideshow hero, “Where every beat tastes like sunshine,” about teaser, latest post excerpt.  
+- **mixes.ejs**: mix cards, waveform/progress, tracklists, live comments (`/api/mixes/:id/comments`).  
+- **blog.ejs / post.ejs**: jelly-card list + modal previews; full post pages with comments (`/api/blog/:slug/comments`).  
+- **about.ejs**: stylized bio, Instagram embed, contact links.  
+- **layout.ejs**: global nav, mobile menu, footer with dark-mode toggle; bundles `theme.js`, `visualizer.js`, `favorites.js`, `comments.js`, etc.
+
+**Visual & Interactive**
+- Fruit-forward pastel palette; soft glassmorphism; rounded “jelly” cards.  
+- Scripts:  
+  - `theme.js` (dark/light + sparkle sound)  
+  - `visualizer.js` (cassette-style waveform/progress)  
+  - `favorites.js` (❤️/🤍 mixes)  
+  - `comments.js` (AJAX comments for mixes/blog)  
+  - `blog-modal.js` (modal previews)  
+  - fun extras: cursor sparkle/fruit trails
+
+**Content System**
+- Blog posts as HTML in `/data/posts`; helper builds excerpts.  
+- RSS compiled dynamically.
+
+**Perf & A11y**
+- `loading="lazy"` images, ARIA labels, prefers-reduced-motion support.  
+- Modular scripts; SEO meta & dynamic descriptions.
+
+**Outcome**
+- Live at **miracleravermango.com** with Cloudflare + PM2 uptime.  
+- Fully responsive, multi-page app with interactive mixes & real comments.
+
+**Reflection**
+Separation of templates/data enables fast updates; aesthetic is colorful and dreamy yet structured; bridged front-end craft with SQL-backed features.
+  </template>
+</article>
+
+
+            <!-- NEEDLE & LEAF — GRAND OPENING EMAIL -->
+<article class="tile" role="listitem" tabindex="0"
+  data-id="needle-leaf-email"
+  data-url="https://miracleravermango.github.io/needle-leaf-grand-opening/"
+  data-title="Needle & Leaf — Grand Opening Email">
+  <img src="assets/fountain-pen-icon.webp" alt="">
+  <div>
+    <h4>Needle & Leaf — Grand Opening</h4>
+    <p>Elegant Email Template</p>
+  </div>
+
+  <template class="summary">
+# Goals
+Create a boutique-bookshop email that balances brand storytelling with **bullet-proof HTML email** techniques and renders cleanly across Gmail, Apple Mail, and Outlook.
+
+## My Role
+Email design and HTML build (tables + inline-safe CSS), testing across major clients.
+
+## Stack
+HTML email (tables), inline CSS, VML for Outlook backgrounds; assets hosted via GitHub.
+
+## Process Highlights
+- Print-inspired layout: parchment “cards” layered over a bookshelf hero.
+- Gold/ink palette and type pairings for literary mood.
+- Robustness first: dark-mode overrides handled with `bgcolor` + `background-color`.
+
+## Outcomes
+A reusable, client-ready template with reliable readability over photography and portable hosting.
+
+---
+
+## Case Study — Needle & Leaf (Grand Opening)
+**Abstract**  
+Fictional boutique bookstore email created to learn and demonstrate professional HTML email craft: narrative tone, layered visuals, and cross-client resilience.
+
+**Constraints & Decisions**
+- Email, not web → **tables + conservative CSS**; inline styles favored.  
+- No SVG/WEBP (client support) → PNG/JPG only.  
+- Background images → **Outlook VML** with HTML fallbacks.  
+- Translucency trade-off → cream cards via `bgcolor="#f6f2eb"` **and** `background-color:#f6f2eb`.
+
+**Design System**
+- **Palette**: Parchment Cream #F6F2EB, Forest #2E473B, Sage, Gold #C2A75D, Plum Ink #4B2F3A, Paper Gray.  
+- **Type**: Playfair Display (headers), Source Sans 3 (body) with Georgia/Arial fallbacks.  
+- **Motifs**: gold leaf divider, vine ornament, handmade paper texture.  
+- **Hierarchy**: Logo strip → hero → headline card → quote card → CTA → “Evening Highlights” → vine footer.
+
+**Implementation**
+- **Structure**: 600px single column; semantic tables; inline CSS.  
+- **Hero overlay**: stacked content; Outlook handled with `v:rect + v:fill type="frame"`.  
+- **Cards**: every table/td has both `bgcolor` and CSS `background-color`.  
+- **Assets**: hosted on GitHub (raw links).
+
+**Testing**
+- **Sender**: Gmail via Apps Script (`htmlBody`).  
+- **Clients verified**: Gmail (web/mobile), Outlook (VML), Apple Mail.  
+- **Fix applied**: add `bgcolor` to every card → legible overlays in all tests.
+
+**Outcome**
+- Working, reusable email matching the Figma mood with crisp type and stable overlays.
+
+**Future Enhancements**
+- Add text-only part (multipart/alternative).  
+- Dark-mode tuning (explicit text/link colors).  
+- Campaign variants: RSVP reminder + post-event thank-you.  
+- ESP partials (header/footer).
+
+**Screenshots**
+- Full email (desktop)  
+- Mobile crop (hero + CTA)  
+- Highlights section close-up
+  </template>
+</article>
+
+
+            <!-- FIREWORKS MEMORY GAME -->
+<article class="tile" role="listitem" tabindex="0"
+  data-id="fireworks-memory"
+  data-url="https://miracleravermango.github.io/fireworks-memory-game/"
+  data-title="Fireworks Memory — Ten-Round Mini Game">
+  <img src="assets/fireworks.png" alt="">
+  <div>
+    <h4>Fireworks Memory</h4>
+    <p>Ten-round Mini Game</p>
+  </div>
+
+  <template class="summary">
+# Goals
+Practice JavaScript interactivity beyond basic button events.  
+Explore Canvas for particle effects (fireworks, sparkles, confetti).  
+Design scalable difficulty modes (*Assist*, *Normal*, *Hard*).  
+Push a class assignment into a **portfolio-ready interactive game**.
+
+## My Role
+Solo designer/developer — concept, code, visual design, and polish.
+
+## Stack
+HTML, CSS, Vanilla JS (Canvas API, LocalStorage).
+
+## Process Highlights
+- Started as a small CodePen “interactive snippet” (hover + burst).  
+- Expanded into a multi-round memory challenge.  
+- Added round logic, sequence tracking, and score HUD.  
+- Layered polish: adaptive difficulty, idle hints, confetti finale, audio toggle, toast messages.  
+- Tuned timing curves until *Hard* felt tough but fair.  
+
+---
+
+## Case Study — 🎇 Fireworks Memory Game
+**Overview**  
+Originally a class project for practicing small interactions, it evolved into a full mini-game inspired by *Simon Says* and arcade fireworks shows.  
+Players watch fireworks explode in sequence, then repeat the pattern to advance.  
+Survive 10 rounds to trigger a “grand finale” of multi-layered fireworks.
+
+**Features**
+1. **Three Difficulty Modes**
+   - *Assist* — Large hint rings + unlimited replays.  
+   - *Normal* — Smaller rings, one replay per round.  
+   - *Hard* — No rings, adaptive hints after misses/idle time.
+2. **Adaptive Grace System**  
+   Hard mode dynamically adjusts tolerance after misses; reduces grace as players improve.  
+3. **Replay Button with Tooltip**  
+   One replay per round (Normal only) with greying-out visual feedback.  
+4. **Endless Mode (optional)**  
+   After Round 10, speed ramps indefinitely for leaderboard potential.  
+5. **Fireworks Finale**  
+   Completing Round 10 triggers layered bursts, confetti volleys, and sweeping sky explosions.
+
+**Tools & Tech**
+- **JavaScript (Canvas API):** core interactivity and particle animations.  
+- **HTML/CSS:** structure, HUD, overlay screens.  
+- **LocalStorage:** stores best round and fastest time.  
+
+**Challenges**
+- Balancing Hard mode so it felt challenging but not unfair.  
+- Syncing timing ramps between difficulty modes.  
+- Designing effects that stayed flashy yet performant.
+
+**Outcome**
+A fun, replayable browser mini-game blending interactivity, visuals, and UX polish — far beyond the original assignment.  
+Demonstrates animation, feedback timing, and adaptive difficulty in a lightweight package.
+
+**Next Steps**
+- Add instructions overlay and refined high-score UI.  
+- Minor audio mix balance and particle-density tuning.  
+- Continued hosting via GitHub Pages for easy sharing.
+
+**Takeaway**
+A showcase of how thoughtful iteration and animation timing can turn a simple coding exercise into an engaging, replayable experience.
+  </template>
+</article>
+
+          </div>
+
+          <!-- Sticky preview pane -->
+          <aside class="preview-pane" aria-live="polite" aria-label="Project preview">
+            <header class="preview-header">
+              <h2 id="previewTitle" class="preview-title">Select a project</h2>
+              <div class="preview-actions">
+                <button id="openBtn" class="btn" disabled>Open Project</button>
+                <button id="expandBtn" class="btn" disabled>Open Case Study</button>
+              </div>
+            </header>
+            <div id="previewContent" class="preview-content preview-empty">
+              <p>Single-click a project tile to see its Process Summary here. Double-click to open the project.</p>
+            </div>
+          </aside>
+        </div>
+        <!-- /work-wrap -->
+      </div>
+
+      <div class="win-statusbar">
+        <span class="status-left" id="statusCount">5 items</span>
+        <span class="status-right" id="statusHint">Ready</span>
+      </div>
+
+      <div class="resizer" data-resize="se" aria-hidden="true"></div>
+      <button class="resize-grip" data-resize="se" aria-label="Resize"></button>
+    </section>
   </main>
 
   <footer class="taskbar">
@@ -106,9 +511,150 @@
   </footer>
 
   <script src="js/app.js"></script>
+
+  <!-- Page script: selection, preview rendering, double-click open, deep link -->
+  <script>
+    (function(){
+      const grid = document.getElementById('projectsGrid');
+      const titleEl = document.getElementById('previewTitle');
+      const contentEl = document.getElementById('previewContent');
+      const openBtn = document.getElementById('openBtn');
+      const expandBtn = document.getElementById('expandBtn');
+      const statusHint = document.getElementById('statusHint');
+
+      function mdToHtml(md){
+  // normalize bullets & separators first
+  md = md
+    .replace(/^\s*[•o▪]\s+/gm, '- ')       // common bullet glyphs -> "- "
+    .replace(/^[\s_.-]{6,}\s*$/gm, '---')   // underline-style rules -> hr
+    .replace(/\r\n?/g, '\n');               // normalize newlines
+
+  // basic inline styles
+  md = md
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>');
+
+  // headings
+  md = md
+    .replace(/^### (.*)$/gm,'<h4>$1</h4>')
+    .replace(/^## (.*)$/gm,'<h3>$1</h3>')
+    .replace(/^# (.*)$/gm,'<h2>$1</h2>')
+    .replace(/^---$/gm,'<hr>');
+
+  // lists (unordered)
+  md = md.replace(/^- (.*)$/gm,'<li>$1</li>');
+  md = md.replace(/(?:^|\n)(<li>[\s\S]*?)(?=\n(?!<li>)|$)/g,
+    (m)=> `<ul>${m.trim()}</ul>`);
+
+  // numbered lists
+  md = md.replace(/^\d+\.\s+(.*)$/gm,'<oli>$1</oli>');
+  md = md.replace(/(?:^|\n)(<oli>[\s\S]*?)(?=\n(?!<oli>)|$)/g,
+    (m)=> `<ol>${m.replace(/<\/?oli>/g,'</li>').replace(/<\/li>\s*<li>/g,'</li><li>').replace(/^<li>/,'<li>')}</ol>`);
+  md = md.replace(/<ol><\/ol>/g,'');
+
+  // paragraphs: keep blank-line gaps readable
+  md = md.replace(/\n{2,}/g,'<br><br>');
+  return md.trim();
+}
+
+// helper: safely extract summary text from <template>
+function getSummaryFrom(card){
+  const tmpl = card.querySelector('template.summary');
+  if (tmpl){
+    // textContent preserves line breaks
+    return tmpl.content.textContent.trim();
+  }
+  return (card.dataset.summary || '').trim();
+}
+
+      function selectCard(card, announce=true){
+        if(!card) return;
+        const name = card.dataset.title || card.querySelector('h4')?.textContent?.trim() || 'Project';
+        const summary = getSummaryFrom(card) || 'No summary yet.';
+        const url = card.dataset.url || null;
+
+        titleEl.textContent = name;
+        contentEl.innerHTML = mdToHtml(summary);
+        contentEl.classList.remove('preview-empty');
+
+        openBtn.disabled = !url;
+        expandBtn.disabled = false;
+
+        openBtn.onclick = () => window.open(url, '_blank', 'noopener');
+        expandBtn.onclick = () => openModal(name, mdToHtml(summary), url);
+
+        if(announce){
+          statusHint.textContent = 'Preview loaded';
+          setTimeout(()=> statusHint.textContent = 'Ready', 1200);
+        }
+      }
+
+      // Click selects; double-click opens
+      grid.addEventListener('click', (e)=>{
+        const card = e.target.closest('.tile');
+        if(!card) return;
+        selectCard(card);
+      });
+
+      grid.addEventListener('dblclick', (e)=>{
+        const card = e.target.closest('.tile');
+        if(!card) return;
+        const url = card.dataset.url;
+        if(url){ window.open(url, '_blank', 'noopener'); }
+      });
+
+      // Keyboard support
+      grid.addEventListener('keydown', (e)=>{
+        const card = e.target.closest('.tile');
+        if(!card) return;
+        if(e.key === 'Enter' || e.key === ' '){
+          e.preventDefault();
+          selectCard(card);
+        }
+        if(e.key.toLowerCase() === 'o' && card.dataset.url){
+          // press "o" to open
+          window.open(card.dataset.url, '_blank', 'noopener');
+        }
+      });
+
+      // Simple modal using <dialog>
+      function openModal(titleText, html, projectURL){
+        let dlg = document.getElementById('caseStudyDlg');
+        if(!dlg){
+          dlg = document.createElement('dialog');
+          dlg.id = 'caseStudyDlg';
+          dlg.innerHTML = `
+            <article style="max-width:min(960px,92vw);max-height:80vh;overflow:auto;padding:0;">
+              <header style="position:sticky;top:0;background:inherit;padding:1rem;border-bottom:1px solid rgba(0,0,0,.08);display:flex;gap:.5rem;align-items:center;justify-content:space-between">
+                <h3 id="dlgTitle" style="margin:0"></h3>
+                <div style="display:flex;gap:.5rem;">
+                  <a id="dlgOpen" class="btn" target="_blank" rel="noopener" style="border:1px solid rgba(0,0,0,.15);border-radius:999px;padding:.45rem .8rem;">Open Project</a>
+                  <button id="dlgClose" class="btn" style="border:1px solid rgba(0,0,0,.15);border-radius:999px;padding:.45rem .8rem;">Close</button>
+                </div>
+              </header>
+              <div id="dlgBody" style="padding:1rem;"></div>
+            </article>`;
+          document.body.appendChild(dlg);
+          dlg.querySelector('#dlgClose').onclick = ()=> dlg.close();
+          dlg.addEventListener('click',(ev)=>{ if(ev.target === dlg) dlg.close(); });
+        }
+        dlg.querySelector('#dlgTitle').textContent = titleText;
+        dlg.querySelector('#dlgBody').innerHTML = html;
+        const link = dlg.querySelector('#dlgOpen');
+        if(projectURL){ link.href = projectURL; link.style.display='inline-block'; }
+        else { link.style.display='none'; }
+        if(typeof dlg.showModal === 'function') dlg.showModal();
+        else dlg.setAttribute('open','');
+      }
+
+      // Optional: deep-link support (?project=bruise-cruise)
+      const params = new URLSearchParams(location.search);
+      const deepId = params.get('project');
+      if(deepId){
+        const card = grid.querySelector(`.tile[data-id="${CSS.escape(deepId)}"]`);
+        if(card){ selectCard(card, false); card.focus(); }
+      }
+    })();
+  </script>
 </body>
 </html>
-
-
-
-
