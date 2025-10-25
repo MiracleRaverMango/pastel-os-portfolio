@@ -464,6 +464,59 @@ A showcase of how thoughtful iteration and animation timing can turn a simple co
   </template>
 </article>
 
+<!-- AURIC MUSEUM — EMAIL INVITE -->
+<article class="tile" role="listitem" tabindex="0"
+  data-id="auric-museum"
+  data-url="https://miracleravermango.github.io/auric-museum-exhibit-invite/"
+  data-title="Auric Museum — Resonant Artifacts (Email Invite)">
+  <img src="https://raw.githubusercontent.com/MiracleRaverMango/auric-museum-exhibit-invite/main/top-logo-border.png" alt="">
+  <div>
+    <h4>Auric Museum — Resonant Artifacts</h4>
+    <p>Luxury HTML Email Invite</p>
+  </div>
+
+  <template class="summary">
+# Goals
+Create a **high-luxury, minimalist Art-Deco** email invite for a fictional museum exhibit — elegant, mysterious, and portfolio-ready — with reliable rendering in Gmail/Yahoo + ESP previews.
+
+## My Role
+Concept, visual system, HTML email build, responsive tuning, cross-client testing.
+
+## Stack
+HTML email (tables + inline-safe CSS), SVG frames, PNG gradient background, GitHub hosting.
+
+## Process Highlights
+- Built **single-image header/footer** (wordmark+monogram) as transparent SVGs to keep edges crisp.
+- Confined a **left→right peacock gradient** to the 600-px card; cream stage background to make gold pop.
+- Mobile refinements: fluid header/footer, thumb-friendly CTA, legible type scaling.
+- ESP-safe patterns: background on `<td>`, repeat-y gradient, fallbacks for Outlook.
+
+---
+
+## Case Study — Auric Museum (Email)
+**Abstract**  
+A press-style invitation for *Resonant Artifacts: An Evening of Sound and Stone*. The tone is quiet, exclusive, and slightly ominous — “please listen, don’t touch.”
+
+**Design Approach**  
+- Palette: midnight (#121835), imperial teal (#0F4C5C), **gilded gold** (#CFAF5E), cream stage (#EAE7DC).  
+- Assets: single **header/footer SVG** frames; peacock **gradient PNG** to ensure identical color across clients.  
+- Type: classic serif for headlines; readable sans/Georgia for body.
+
+**Implementation**
+- 600-px single column; conservative CSS inlined on elements.
+- Gradient applied to the **inner content `<td>`** for ESP reliability; `background-repeat: repeat-y` for tall screens.
+- Footer text placed **inside** the SVG frame via background + padding; mirrored spacing for Outlook.
+
+**Testing & Results**
+- Verified in **MailerLite** preview + live sends to **Gmail** and **Yahoo**.
+- Works as a **live demo** via GitHub Pages: consistent color and crisp frames.
+- CTA linked to a Pages index for a clean portfolio loop.
+
+**Outcome**
+A polished, resilient HTML invite that feels like a museum press card — ornate but restrained, with gemstone color and gilded accents that stand out on any device.
+  </template>
+</article>
+            
           </div>
 
           <!-- Sticky preview pane -->
@@ -673,4 +726,5 @@ document.querySelectorAll('.tile .summary').forEach(el => {
 </script>
 </body>
 </html>
+
 
