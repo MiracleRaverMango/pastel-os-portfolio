@@ -589,6 +589,78 @@ Designing for email means balancing vision with client reality.
 Through iteration and testing, the Poolside Pop-Up email achieves that balance: bright, dependable, and true to Bruise Cruise’s playful brand.
                 </template>
               </article>
+
+<!-- Risqué Email Campaign -->
+<article class="tile" role="listitem" tabindex="0"
+  data-id="risque-email"
+  data-url="https://miracleravermango.github.io/risque-email-template/"
+  data-title="Risqué — Midnight Showcase Email">
+  <img src="assets/risque_icon.png" alt="Risqué Logo">
+  <div>
+    <h4>Risqué — Midnight Showcase</h4>
+    <p>Neon-Noir HTML Email</p>
+  </div>
+  <template class="summary">
+# Goals
+Design a **high-energy, neon-noir HTML email** for a fictional nightlife collective.  
+Blend immersive color, modern typography, and reliable code to deliver a visually striking event promo that performs consistently across Gmail, MailerLite, and Yahoo Mail.
+
+## My Role
+Creative direction, visual design, HTML coding, and cross-client testing.
+
+## Stack
+HTML email (table layout, inline CSS, VML fallback), GitHub-hosted assets, MailerLite QA.
+
+## Process Highlights
+- Defined a **600×1500 px layout** for predictable rendering.  
+- Layered semi-transparent black overlays over a **glass texture** (15% opacity simulation) for depth.  
+- Centered the logo and tagline in a **120 px header** for bold hierarchy.  
+- Used alternating **cyan and magenta dividers** for rhythmic visual breaks.  
+- Simplified textures to improve contrast and overall legibility.  
+- Tested iteratively across major clients, with fallback adjustments for Yahoo Mail.
+
+---
+
+## Case Study — Risqué (Midnight Showcase Email)
+**Overview**  
+The *Risqué Email Campaign* captures late-night energy and confident sophistication through a neon-noir aesthetic.  
+It balances immersive design with the technical rigor required for HTML email deliverability.
+
+**Goals & Challenges**
+- Maintain rich, layered visuals under strict email CSS limitations.  
+- Resolve inconsistent background behavior (especially in Yahoo Mail).  
+- Create a modular structure with visual hierarchy and minimal file dependencies.
+
+**Technical Execution**
+- **Background Control:** Fixed 600×1500 px JPEG anchored with VML `<v:rect>` for Outlook stability.  
+- **Transparency Effects:** Combined pre-faded PNG overlays and CSS blending to simulate 15% glass opacity.  
+- **Cross-Client Testing:** Iterative verification in Gmail, MailerLite, and Yahoo to ensure acceptable fallback behavior.
+
+**Design System**
+- **Palette:** Jet Black #0C0C0F, Cyan #00FFFF, Hot Magenta #FF33CC, White #EAEAEA.  
+- **Type:** Arial Black (headers), Helvetica/Arial (body).  
+- **Motifs:** Frosted glass panels, neon dividers, glowing CTA buttons, black-glass header/footer.  
+- **Composition:** Alternating “solid” and “glass” sections to guide rhythm and readability.
+
+**Testing Results**
+- **Gmail / MailerLite:** Accurate visual match to mockup.  
+- **Yahoo Mail:** Slight flattening of gradient and glow but fully legible.  
+- **Outlook:** Displays the full background image with VML fallback intact.
+
+**Outcome**
+Delivered a **vivid, cross-client-stable HTML email** that merges event-poster aesthetics with professional campaign reliability.  
+The final product communicates energy and style while maintaining accessibility and structural resilience.
+
+**Tools & Technologies**
+Figma, Photoshop, HTML, inline CSS, VML, MailerLite, GitHub asset hosting.
+
+**Takeaway**
+A demonstration of how **design energy** and **engineering restraint** can coexist.  
+By optimizing imagery, layering, and client behavior, *Risqué — Midnight Showcase* achieved a polished, high-impact presentation that’s both expressive and dependable.
+  </template>
+</article>
+
+    
             </div>
           </div>
         </details>
@@ -827,3 +899,4 @@ if (deepId) {
   </script>
 </body>
 </html>
+
